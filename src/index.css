@@ -25,7 +25,75 @@ main {
   margin: auto;
 }
 
+#titlep1 {
+  text-align: center;
+  position: relative;
+  top: 10rem;
+  font-size: 5rem;
+}
 
+#button1 {
+  background: #5e5df0;
+  border-radius: 999px;
+  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 50px;
+  width: 200px;
+  word-break: break-word;
+  border: 0;
+  display: block; /* Make the button a block element */
+  margin: 5rem auto 0; /* Add more space above the button and center it horizontally */
+}
+
+#button2 {
+  background: #5e5df0;
+  border-radius: 999px;
+  box-shadow: #5e5df0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  height: 50px;
+  width: 200px;
+  word-break: break-word;
+  border: 0;
+  display: block; /* Make the button a block element */
+  margin: 1rem auto 0; /* Add more space above the button and center it horizontally */
+}
+
+#titlep2 {
+  text-align: center;
+  position: relative;
+  top: 5rem;
+  font-size: 5rem;
+}
 
 main h2 {
   text-align: center;
@@ -34,8 +102,6 @@ main h2 {
   color: #a18aba;
 }
 
-
-
 #examples {
   margin: 3rem auto;
 }
@@ -43,8 +109,6 @@ main h2 {
 #examples h2 {
   text-align: left;
 }
-
-
 
 #tab-content {
   padding: 1rem;

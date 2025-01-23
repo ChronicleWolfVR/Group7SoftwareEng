@@ -8,9 +8,13 @@
 function App() {
   return (
     <>
-    <main>
-      <h2>Hello world</h2>
-    </main>
+      <main>
+        <h1 id="titlep1">Welcome to</h1>
+        <h1 id="titlep2">Smart Homes</h1>
+
+        <button id="button1">Login</button>
+        <button id="button2">Sign up</button>
+      </main>
     </>
   );
 }
