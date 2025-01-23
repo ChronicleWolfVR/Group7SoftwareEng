@@ -8,6 +8,7 @@
 function App() {
   return (
     <>
+    <div id="centered-container">
       <main>
         <h1 id="titlep1">Welcome to</h1>
         <h1 id="titlep2">Smart Homes</h1>
@@ -15,6 +16,7 @@ function App() {
         <button id="button1">Login</button>
         <button id="button2">Sign up</button>
       </main>
+    </div>
     </>
   );
 }
