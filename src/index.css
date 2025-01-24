@@ -43,33 +43,16 @@ main {
 #titlep1 {
   font-weight: 200;
   height: 3rem;
+  margin: auto;
 }
 
 #titlep2 {
   font-size: 5rem;
-
+  margin: auto;
 }
 
 /* Buttons */
-button {
-  background: linear-gradient(to right, #CFC7FC, #FEEEF1);
-  border-radius: 999px;
-  box-shadow: #cfb4dc 0 10px 20px -10px;
-  color: #000000;
-  cursor: pointer;
-  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  padding: 8px 18px;
-  user-select: none;
-  touch-action: manipulation;
-  height: 50px;
-  width: 200px;
-  border: 0;
-  display: block;
-  margin: auto;
-}
+
 
 #button2 {
   margin-top: 1rem;
@@ -106,3 +89,6 @@ main h2 {
 #tab-content code {
   font-size: 1rem;
 }
+
+/* Login Form */
+

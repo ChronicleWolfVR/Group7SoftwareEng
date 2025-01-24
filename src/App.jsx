@@ -1,17 +1,34 @@
-import React from 'react';
-import Title from './components/Title';
-import Button from './components/Button';
+import React, { useState } from "react";
+import Title from "./components/Title/Title";
+import Button from "./components/Button/Button";
+import LoginForm from "./components/LoginForm/LoginForm";
 
 function App() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleButtonClick = () => {
+    setIsVisible(false);
+  };
+
   return (
     <>
       <div id="centered-container">
         <main>
-          <Title id="titlep1">Welcome to</Title>
-          <Title id="titlep2">Smart Homes</Title>
-
-          <Button id="button1">Login</Button>
-          <Button id="button2">Sign up</Button>
+          {isVisible && (
+            <>
+              <section id="title">
+                <Title id="titlep1">Welcome to</Title>
+                <Title id="titlep2">Smart Homes</Title>
+              </section>
+              <Button id="button1" onClick={handleButtonClick}>
+                Login
+              </Button>
+              <Button id="button2" onClick={handleButtonClick}>
+                Sign up
+              </Button>
+            </>
+          )}
+          {!isVisible && <LoginForm />}
         </main>
       </div>
     </>
