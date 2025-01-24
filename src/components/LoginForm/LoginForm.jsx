@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './LoginForm.css';
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
@@ -20,6 +21,7 @@ const LoginForm = () => {
                     id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Enter your username"
                     required
                 />
             </div>
@@ -30,6 +32,7 @@ const LoginForm = () => {
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter your password"
                     required
                 />
             </div>

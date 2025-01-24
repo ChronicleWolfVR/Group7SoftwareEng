@@ -28,7 +28,13 @@ function App() {
               </Button>
             </>
           )}
-          {!isVisible && <LoginForm />}
+          {!isVisible && (
+            <section id="Login">
+              <Title id="titlep1">Welcome to</Title>
+              <Title id="titlep2">Smart Homes</Title>
+              <LoginForm />
+            </section>
+          )}
         </main>
       </div>
     </>
