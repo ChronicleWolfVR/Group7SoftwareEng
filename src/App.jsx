@@ -1,22 +1,19 @@
-// import { useState } from "react";
-// import Header from "./components/Header/Header.jsx";
-// import CoreConcepts from "./components/CoreConcepts/CoreConcepts.jsx";
-// import TabButton from "./components/TabButton/TabButton.jsx";
-// import { CORE_CONCEPTS } from "./data-with-examples.js";
-// import { EXAMPLES } from "./data-with-examples.js";
+import React from 'react';
+import Title from './components/Title';
+import Button from './components/Button';
 
 function App() {
   return (
     <>
-    <div id="centered-container">
-      <main>
-        <h1 id="titlep1">Welcome to</h1>
-        <h1 id="titlep2">Smart Homes</h1>
+      <div id="centered-container">
+        <main>
+          <Title id="titlep1">Welcome to</Title>
+          <Title id="titlep2">Smart Homes</Title>
 
-        <button id="button1">Login</button>
-        <button id="button2">Sign up</button>
-      </main>
-    </div>
+          <Button id="button1">Login</Button>
+          <Button id="button2">Sign up</Button>
+        </main>
+      </div>
     </>
   );
 }
