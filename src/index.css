@@ -42,10 +42,12 @@ main {
 
 #titlep1 {
   font-weight: 200;
+  height: 3rem;
 }
 
 #titlep2 {
   font-size: 5rem;
+
 }
 
 /* Buttons */
