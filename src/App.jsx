@@ -1,38 +1,50 @@
-import React, { useState } from "react";
-import Title from "./components/Title/Title";
-import Button from "./components/Button/Button";
-import LoginForm from "./components/LoginForm/LoginForm";
+import React, { useState } from 'react';
+import Title from './components/Title/Title';
+import Button from './components/Button/Button';
+import LoginForm from './components/LoginForm/LoginForm';
+import SignUpForm from './components/SignUpForm/SignUpForm'; // Assuming you have a SignUpForm component
 
 function App() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [formType, setFormType] = useState(null);
 
-  const handleButtonClick = () => {
-    setIsVisible(false);
+  const handleLoginClick = () => {
+    setFormType('login');
+  };
+
+  const handleSignUpClick = () => {
+    setFormType('signup');
   };
 
   return (
     <>
       <div id="centered-container">
         <main>
-          {isVisible && (
+          {!formType && (
             <>
               <section id="title">
                 <Title id="titlep1">Welcome to</Title>
                 <Title id="titlep2">Smart Homes</Title>
               </section>
-              <Button id="button1" onClick={handleButtonClick}>
+              <Button id="button1" onClick={handleLoginClick}>
                 Login
               </Button>
-              <Button id="button2" onClick={handleButtonClick}>
+              <Button id="button2" onClick={handleSignUpClick}>
                 Sign up
               </Button>
             </>
           )}
-          {!isVisible && (
+          {formType === 'login' && (
             <section id="Login">
               <Title id="titlep1">Welcome to</Title>
               <Title id="titlep2">Smart Homes</Title>
               <LoginForm />
+            </section>
+          )}
+          {formType === 'signup' && (
+            <section id="SignUp">
+              <Title id="titlep1">Welcome to</Title>
+              <Title id="titlep2">Smart Homes</Title>
+              <SignUpForm />
             </section>
           )}
         </main>
