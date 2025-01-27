@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Title from './components/Title/Title';
 import Button from './components/Button/Button';
 import LoginForm from './components/LoginForm/LoginForm';
-import SignUpForm from './components/SignUpForm/SignUpForm'; // Assuming you have a SignUpForm component
+import SignUpForm from './components/SignUpForm/SignUpForm';
 
 function App() {
   const [formType, setFormType] = useState(null);
@@ -13,6 +13,10 @@ function App() {
 
   const handleSignUpClick = () => {
     setFormType('signup');
+  };
+
+  const handleCloseForm = () => {
+    setFormType(null);
   };
 
   return (
@@ -37,14 +41,14 @@ function App() {
             <section id="Login">
               <Title id="titlep1">Welcome to</Title>
               <Title id="titlep2">Smart Homes</Title>
-              <LoginForm />
+              <LoginForm onClose={handleCloseForm} />
             </section>
           )}
           {formType === 'signup' && (
             <section id="SignUp">
               <Title id="titlep1">Welcome to</Title>
               <Title id="titlep2">Smart Homes</Title>
-              <SignUpForm />
+              <SignUpForm onClose={handleCloseForm} />
             </section>
           )}
         </main>

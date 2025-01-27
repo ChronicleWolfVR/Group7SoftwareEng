@@ -91,4 +91,28 @@ main h2 {
 }
 
 /* Login Form */
+.form-container {
+  position: relative;
+}
 
+.close-button {
+  background: linear-gradient(to right, #CFC7FC, #FEEEF1);
+  border-radius: 999px;
+  box-shadow: #cfb4dc 0 10px 20px -10px;
+  color: #000000;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 8px 18px;
+  user-select: none;
+  touch-action: manipulation;
+  text-align: center;
+  height:2.5rem;
+  width: 3rem;
+  border: 0;
+  position: absolute; /* Change from display: absolute to position: absolute */
+  top: 0;
+  left: 35rem;
+}
