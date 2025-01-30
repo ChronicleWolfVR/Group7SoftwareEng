@@ -2,117 +2,149 @@
 
 /* Global Styles */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
 }
 
 html {
-  font-family: "Quicksand", sans-serif;
-  line-height: 1.5;
-  color: #ebe7ef;
-  background: linear-gradient(to top, #6a11cb, #1E1649);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  min-height: 80rem;
+  font-family: "Kumbh Sans", sans-serif; /* Sets the global font family */
+  line-height: 1.5; /* Sets the global line height */
+  color: #ebe7ef; /* Sets the global text color */
+  background: linear-gradient(to top, #6a11cb, #1e1649); /* Sets the background gradient */
+  font-synthesis: none; /* Disables font synthesis */
+  text-rendering: optimizeLegibility; /* Optimizes text rendering for legibility */
+  -webkit-font-smoothing: antialiased; /* Smooths fonts on WebKit browsers */
+  -moz-osx-font-smoothing: grayscale; /* Smooths fonts on macOS Firefox */
+  -webkit-text-size-adjust: 100%; /* Prevents font size adjustments after orientation changes in iOS */
+  min-height: 80rem; /* Sets a minimum height for the document */
 }
 
 /* Main Container */
 main {
-  width: 90%;
-  max-width: 50rem;
-  margin: auto;
-  text-align: center;
+  width: 90%; /* Sets the width of the main container */
+  max-width: 50rem; /* Sets the maximum width of the main container */
+  margin: auto; /* Centers the main container */
+  text-align: center; /* Centers text inside the main container */
 }
 
 #centered-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  display: flex; /* Uses flexbox for layout */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  height: 100vh; /* Sets the height to 100% of the viewport height */
 }
 
 /* Titles */
-#titlep1, #titlep2 {
-  font-family: "Kumbh Sans", serif;
-  font-size: 3rem;
-  margin: auto;
+#titlep1,
+#titlep2 {
+  font-family: "Kumbh Sans", serif; /* Sets the font family for titles */
+  font-size: 3rem; /* Sets the font size for titles */
+  margin: auto; /* Centers the titles */
 }
 
 #titlep1 {
-  font-weight: 200;
-  height: 3rem;
-  margin: auto;
+  font-weight: 200; /* Sets a lighter font weight for title 1 */
+  height: 3rem; /* Sets the height for title 1 */
+  margin: auto; /* Centers title 1 */
 }
 
 #titlep2 {
-  font-size: 5rem;
-  margin: auto;
+  font-size: 5rem; /* Sets a larger font size for title 2 */
+  margin: auto; /* Centers title 2 */
 }
 
 /* Buttons */
-
-
 #button2 {
-  margin-top: 1rem;
+  margin-top: 1rem; /* Adds a top margin to button 2 */
 }
 
 /* Headings */
 main h2 {
-  font-family: "Roboto Condensed", sans-serif;
-  margin: 0 0 1.5rem;
-  color: #a18aba;
+  font-family: "Roboto Condensed", sans-serif; /* Sets the font family for h2 headings */
+  margin: 0 0 1.5rem; /* Sets the margin for h2 headings */
+  color: #a18aba; /* Sets the color for h2 headings */
 }
 
 #examples {
-  margin: 3rem auto;
+  margin: 3rem auto; /* Sets the margin for the examples section */
 }
 
 #examples h2 {
-  text-align: left;
+  text-align: left; /* Aligns h2 headings to the left in the examples section */
 }
-
 
 /* Tab Content */
 #tab-content {
-  padding: 1rem;
-  border-radius: 6px;
-  background-color: #2f1d43;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 1rem; /* Adds padding to the tab content */
+  border-radius: 6px; /* Rounds the corners of the tab content */
+  background-color: #2f1d43; /* Sets the background color of the tab content */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Adds a shadow to the tab content */
 }
 
 #tab-content h3 {
-  margin: 0;
+  margin: 0; /* Removes the margin for h3 headings in the tab content */
 }
 
 #tab-content code {
-  font-size: 1rem;
+  font-size: 1rem; /* Sets the font size for code elements in the tab content */
 }
 
 /* Login Form */
 .form-container {
-  position: relative;
+  position: relative; /* Sets the position to relative for the form container */
 }
 
 .close-button {
-  background: linear-gradient(to right, #CFC7FC, #FEEEF1);
-  border-radius: 999px;
-  box-shadow: #cfb4dc 0 10px 20px -10px;
-  color: #000000;
-  cursor: pointer;
-  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  padding: 8px 18px;
-  user-select: none;
-  touch-action: manipulation;
-  text-align: center;
-  height:2.5rem;
-  width: 3rem;
-  border: 0;
-  position: absolute; /* Change from display: absolute to position: absolute */
-  top: 0;
-  left: 35rem;
+  background: linear-gradient(to right, #cfc7fc, #feeef1); /* Sets the background gradient for the close button */
+  border-radius: 999px; /* Makes the close button circular */
+  box-shadow: #cfb4dc 0 10px 20px -10px; /* Adds a shadow to the close button */
+  color: #000000; /* Sets the text color for the close button */
+  cursor: pointer; /* Changes the cursor to a pointer when hovering over the close button */
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif; /* Sets the font family for the close button */
+  font-size: 16px; /* Sets the font size for the close button */
+  font-weight: 700; /* Sets the font weight for the close button */
+  line-height: 24px; /* Sets the line height for the close button */
+  padding: 8px 18px; /* Adds padding to the close button */
+  user-select: none; /* Prevents text selection on the close button */
+  touch-action: manipulation; /* Disables default touch actions */
+  text-align: center; /* Centers text inside the close button */
+  height: 2.5rem; /* Sets the height of the close button */
+  width: 3rem; /* Sets the width of the close button */
+  border: 0; /* Removes the border of the close button */
+  position: absolute; /* Positions the close button absolutely */
+  top: 0; /* Aligns the close button to the top */
+  left: 73%; /* Aligns the close button to the left */
+  transform: translateX(-50%); /* Centers the close button horizontally */
+}
+
+/* Fading Animation */
+/* Fade-in and fade-out animations */
+.fade-in {
+  opacity: 0; /* Sets the initial opacity for fade-in */
+  animation: fadeIn 1s forwards; /* Applies the fadeIn animation */
+}
+
+.fade-out {
+  opacity: 1; /* Sets the initial opacity for fade-out */
+  animation: fadeOut 1s forwards; /* Applies the fadeOut animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Starts the fadeIn animation with opacity 0 */
+  }
+  to {
+    opacity: 1; /* Ends the fadeIn animation with opacity 1 */
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; /* Starts the fadeOut animation with opacity 1 */
+  }
+  to {
+    opacity: 0; /* Ends the fadeOut animation with opacity 0 */
+  }
 }
