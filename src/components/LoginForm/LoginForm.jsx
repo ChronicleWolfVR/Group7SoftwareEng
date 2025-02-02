@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
 
-const LoginForm = ({ onClose }) => {
+const LoginForm = ({ onClose, onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
+    if (username === "admin" && password === "admin") {
+      console.log('Logged in successfully');
+      onLoginSuccess(); // Call the onLoginSuccess function
+    } else {
+      console.log('Invalid credentials');
+    }
   };
 
   return (
