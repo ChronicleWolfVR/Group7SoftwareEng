@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Title from './components/Title/Title';
 import Button from './components/Button/Button';
 import LoginForm from './components/LoginForm/LoginForm';
 import SignUpForm from './components/SignUpForm/SignUpForm';
-import HomePage from './components/HomePage/HomePage'; // Assuming you have a HomePage component
+import HomePage from './components/HomePage/HomePage'; // Ensure you have this component
 import './index.css'; // Ensure you import the CSS file
 
 function App() {
@@ -13,9 +13,11 @@ function App() {
   const [titleFadeClass, setTitleFadeClass] = useState('');
   const [hasTitleDisplayed, setHasTitleDisplayed] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
+    navigate('/home'); // Navigate to the home page
   };
 
   const handleLoginClick = () => {
@@ -44,46 +46,50 @@ function App() {
   };
 
   return (
+    <div id="centered-container">
+      <main>
+        {!formType && (
+          <>
+            <section id="title" className={titleFadeClass}>
+              <Title id="titlep1">Welcome to</Title>
+              <Title id="titlep2">Smart Homes</Title>
+            </section>
+            <Button id="button1" onClick={handleLoginClick}>
+              Login
+            </Button>
+            <Button id="button2" onClick={handleSignUpClick}>
+              Sign up
+            </Button>
+          </>
+        )}
+        {formType === 'login' && (
+          <section id="Login" className={fadeClass}>
+            <Title id="titlep1">Welcome to</Title>
+            <Title id="titlep2">Smart Homes</Title>
+            <LoginForm onClose={handleCloseForm} onLoginSuccess={handleLoginSuccess} />
+          </section>
+        )}
+        {formType === 'signup' && (
+          <section id="SignUp" className={fadeClass}>
+            <Title id="titlep1">Welcome to</Title>
+            <Title id="titlep2">Smart Homes</Title>
+            <SignUpForm onClose={handleCloseForm} />
+          </section>
+        )}
+      </main>
+    </div>
+  );
+}
+
+function AppWrapper() {
+  return (
     <Router>
       <Routes>
-        <Route path="/home" element={isLoggedIn ? <HomePage /> : <Navigate to="/" />} />
-        <Route path="/" element={
-          <div id="centered-container">
-            <main>
-              {!formType && (
-                <>
-                  <section id="title" className={titleFadeClass}>
-                    <Title id="titlep1">Welcome to</Title>
-                    <Title id="titlep2">Smart Homes</Title>
-                  </section>
-                  <Button id="button1" onClick={handleLoginClick}>
-                    Login
-                  </Button>
-                  <Button id="button2" onClick={handleSignUpClick}>
-                    Sign up
-                  </Button>
-                </>
-              )}
-              {formType === 'login' && (
-                <section id="Login" className={fadeClass}>
-                  <Title id="titlep1">Welcome to</Title>
-                  <Title id="titlep2">Smart Homes</Title>
-                  <LoginForm onClose={handleCloseForm} onLoginSuccess={handleLoginSuccess} />
-                </section>
-              )}
-              {formType === 'signup' && (
-                <section id="SignUp" className={fadeClass}>
-                  <Title id="titlep1">Welcome to</Title>
-                  <Title id="titlep2">Smart Homes</Title>
-                  <SignUpForm onClose={handleCloseForm} />
-                </section>
-              )}
-            </main>
-          </div>
-        } />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/" element={<App />} />
       </Routes>
     </Router>
   );
 }
 
-export default App;
+export default AppWrapper;
