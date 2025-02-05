@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import Title from './components/Title/Title';
 import Button from './components/Button/Button';
-import LoginForm from './components/LoginForm/LoginForm';
-import SignUpForm from './components/SignUpForm/SignUpForm';
+import LoginForm from './components/StartPage/LoginForm/LoginForm';
+import SignUpForm from './components/StartPage/SignUpForm/SignUpForm';
 import HomePage from './components/HomePage/HomePage'; // Ensure you have this component
 import './index.css'; // Ensure you import the CSS file
 
@@ -50,7 +50,8 @@ function App() {
       <main>
         {!formType && (
           <>
-            <section id="title" className={titleFadeClass}>
+          <div className={titleFadeClass}>
+            <section id="title">
               <Title id="titlep1">Welcome to</Title>
               <Title id="titlep2">Smart Homes</Title>
             </section>
@@ -60,6 +61,7 @@ function App() {
             <Button id="button2" onClick={handleSignUpClick}>
               Sign up
             </Button>
+          </div>
           </>
         )}
         {formType === 'login' && (
