@@ -14,7 +14,7 @@ const HomePage = () => {
       <button className="menu-button">=</button>
       <div className="home-page">
         <Title id="titlep2">Smart Home</Title>
-        <menu id="examples">
+        <menu id="tabs">
           {tabs.map((tab) => (
             <TabButton
               key={tab}

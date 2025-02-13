@@ -21,13 +21,15 @@ const Overview = () => {
   ];
 
   const pieData = [
-    { name: 'Group A', value: 400 },
-    { name: 'Group B', value: 300 },
-    { name: 'Group C', value: 300 },
-    { name: 'Group D', value: 200 },
-    { name: 'Group E', value: 278 },
-    { name: 'Group F', value: 189 },
+    { name: "Group A", value: 400 },
+    { name: "Group B", value: 300 },
+    { name: "Group C", value: 300 },
+    { name: "Group D", value: 200 },
+    { name: "Group E", value: 278 },
+    { name: "Group F", value: 189 },
   ];
+
+  const percentageDifference = 20 + "% lower";
 
   return (
     <>
@@ -46,6 +48,8 @@ const Overview = () => {
             <YAxis />
             <Tooltip />
           </LineChart>
+          <p>The energy usage is {percentageDifference} than last week</p>
+          <button>View More</button>
         </div>
         <div className="card">
           <h2>Energy Consumption Usage</h2>

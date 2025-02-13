@@ -25,9 +25,13 @@
     align-items: center;
   }
   
-  .card h2 {
+  .card h2, .card p {
     margin-bottom: 20px;
     background: linear-gradient(to top, #6a11cb, #1e1649);
     -webkit-background-clip: text;
     color: transparent;
+  }
+
+  .card button{
+    width: 100%;
   }
