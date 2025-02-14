@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Title from "../Title/Title";
 import TabButton from "./TabButton/TabButton";
 import Overiew from "./Overview/Overview";
+import Thermostat from "./Thermostat/Thermostat";
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -32,7 +33,11 @@ const HomePage = () => {
             </div>
           )}
           {selectedTab === "Lights" && <div>Lights Content</div>}
-          {selectedTab === "Thermostat" && <div>Thermostat Content</div>}
+          {selectedTab === "Thermostat" && (
+            <div>
+              <Thermostat />
+            </div>
+          )}
           {selectedTab === "Smart Plugs" && <div>Smart Plugs Content</div>}
           {selectedTab === "Robots" && <div>Robots Content</div>}
         </div>
