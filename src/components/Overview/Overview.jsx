@@ -53,23 +53,33 @@ const Overview = () => {
         </div>
         <div className="card">
           <h2>Energy Consumption Usage</h2>
-          <PieChart width={400} height={400}>
+          <PieChart width={400} height={200}>
             <Pie
               dataKey="value"
-              startAngle={180}
+              startAngle={360}
               endAngle={0}
               data={pieData}
               cx="50%"
               cy="50%"
-              outerRadius={80}
+              outerRadius={100}
               fill="#8884d8"
-              label
             />
           </PieChart>
+          <h4>Monthly energy usage</h4>
+          <h2>165 kw</h2>
+          <h4>Monthly Goal</h4>
+          <h2>Reduce usage by 300 kw</h2>
+          <h4>Progress</h4>
+          <h2>45%</h2>
         </div>
         <div className="card">
           <h2>Current Energy Usage</h2>
-          {/* Add content for the third card here */}
+          <h1>2.1kw</h1>
+          <p>Your home's power draw at the moment</p>
+          <h2>48kw</h2>
+          <p>24-hr usage</p>
+          <h2>£5.20</h2>
+          <p>Estimated cost</p>
         </div>
       </div>
     </>

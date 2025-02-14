@@ -25,11 +25,15 @@
     align-items: center;
   }
   
-  .card h2, .card p {
+  .card h2, .card p, .card h1, .card h4 {
     margin-bottom: 20px;
     background: linear-gradient(to top, #6a11cb, #1e1649);
     -webkit-background-clip: text;
     color: transparent;
+  }
+
+  h1{
+    text-align: left;
   }
 
   .card button{
