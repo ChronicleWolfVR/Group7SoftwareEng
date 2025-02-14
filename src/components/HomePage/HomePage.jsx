@@ -7,7 +7,7 @@ import "./HomePage.css";
 const HomePage = () => {
   const [selectedTab, setSelectedTab] = useState("Overview");
 
-  const tabs = ["Overview", "Lights", "Thermostat", "Smart Plugs", "Robots"];
+  const tabs = ["Overview", "Thermostat", "Lights", "Smart Plugs", "Robots"];
 
   return (
     <>
@@ -28,7 +28,7 @@ const HomePage = () => {
         <div id="tab-content">
           {selectedTab === "Overview" && (
             <div>
-             <Overiew />
+              <Overiew />
             </div>
           )}
           {selectedTab === "Lights" && <div>Lights Content</div>}
