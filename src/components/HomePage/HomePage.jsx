@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Title from "../Title/Title";
 import TabButton from "./TabButton/TabButton";
-import Overiew from "../Overview/Overview";
+import Overiew from "./Overview/Overview";
 import "./HomePage.css";
 
 const HomePage = () => {
