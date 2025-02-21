@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
-import Title from '../Title/Title';
-import TabButton from './TabButton/TabButton';
-import './HomePage.css';
+import React, { useState } from "react";
+import Title from "../Title/Title";
+import TabButton from "./TabButton/TabButton";
+import Overiew from "./Overview/Overview";
+import Thermostat from "./Thermostat/Thermostat";
+import Lights from "./Lights/Lights";
+import "./HomePage.css";
 
 const HomePage = () => {
-  const [selectedTab, setSelectedTab] = useState('Overview');
+  const [selectedTab, setSelectedTab] = useState("Overview");
 
-  const tabs = ['Overview', 'Lights', 'Thermostat', 'Smart Plugs', 'Robots'];
+  const tabs = ["Overview", "Thermostat", "Lights", "Smart Plugs", "Robots"];
 
   return (
     <>
-    <button className="menu-button">=</button>
-    <div className="home-page">
+      <button className="menu-button">=</button>
+      <div className="home-page">
         <Title id="titlep2">Smart Home</Title>
-        <menu id="examples">
+        <menu id="tabs">
           {tabs.map((tab) => (
             <TabButton
               key={tab}
@@ -25,11 +28,19 @@ const HomePage = () => {
           ))}
         </menu>
         <div id="tab-content">
-          {selectedTab === 'Overview' && <div>Overview Content</div>}
-          {selectedTab === 'Lights' && <div>Lights Content</div>}
-          {selectedTab === 'Thermostat' && <div>Thermostat Content</div>}
-          {selectedTab === 'Smart Plugs' && <div>Smart Plugs Content</div>}
-          {selectedTab === 'Robots' && <div>Robots Content</div>}
+          {selectedTab === "Overview" && (
+            <div>
+              <Overiew />
+            </div>
+          )}
+          {selectedTab === "Lights" && <div><Lights /></div>}
+          {selectedTab === "Thermostat" && (
+            <div>
+              <Thermostat />
+            </div>
+          )}
+          {selectedTab === "Smart Plugs" && <div>Smart Plugs Content</div>}
+          {selectedTab === "Robots" && <div>Robots Content</div>}
         </div>
       </div>
     </>

@@ -36,3 +36,9 @@
     align-items: center; /* Centers content vertically */
     height: 100vh; /* Sets the height to 100% of the viewport height */
   }
+
+  #tabs {
+    display: flex; /* Uses flexbox for layout */
+    gap: 1rem; /* Adds space between tab buttons */
+    flex: 1;
+  }
