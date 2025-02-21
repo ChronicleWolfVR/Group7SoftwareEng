@@ -74,7 +74,7 @@ const Lights = () => {
       </div>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <input
+        <input className="light-input"
           type="text"
           value={newLightName}
           onChange={(e) => setNewLightName(e.target.value)}
