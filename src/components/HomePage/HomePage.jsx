@@ -3,6 +3,7 @@ import Title from "../Title/Title";
 import TabButton from "./TabButton/TabButton";
 import Overiew from "./Overview/Overview";
 import Thermostat from "./Thermostat/Thermostat";
+import Lights from "./Lights/Lights";
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -32,7 +33,7 @@ const HomePage = () => {
               <Overiew />
             </div>
           )}
-          {selectedTab === "Lights" && <div>Lights Content</div>}
+          {selectedTab === "Lights" && <div><Lights /></div>}
           {selectedTab === "Thermostat" && (
             <div>
               <Thermostat />
