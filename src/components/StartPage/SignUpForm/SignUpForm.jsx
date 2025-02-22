@@ -7,13 +7,39 @@ const SignUpForm = ({ onClose }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log("Submitting signup form...");
     e.preventDefault();
     // Handle sign up logic here
-    console.log('Full Name:', fullName);
-    console.log('Email:', email);
-    console.log('Username:', username);
-    console.log('Password:', password);
+    // console.log('Full Name:', fullName);
+    // console.log('Email:', email);
+    // console.log('Username:', username);
+    // console.log('Password:', password);
+
+    const signUpData = {
+      fullName,
+      email,
+      username,
+      password
+    };
+
+    try {
+      const response = await fetch('http://localhost:3000/api/users/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(signUpData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Signed up successfully');
+      } else {
+        console.log('Error signing up:', data.message);
+      }
+    } catch (error) {
+      console.error('Error signing up:', error);
+    }
   };
 
   return (
