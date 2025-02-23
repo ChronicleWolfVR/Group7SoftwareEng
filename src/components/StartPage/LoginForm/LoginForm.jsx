@@ -14,19 +14,21 @@ const LoginForm = ({ onClose, onLoginSuccess }) => {
       console.log('Invalid credentials');
     }
 
+    //object with the users login data
     const loginData = {
       username,
       password
     }
   
 
+    //sending a post request to server
   try {
     const response = await fetch('http://localhost:3000/api/users/login',{
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(loginData)
+        headers: {'Content-Type': 'application/json'}, //setting type
+        body: JSON.stringify(loginData) //converting to json, as the requeset body
       });
-
+      //parsing the response
       const data = await response.json();
 
       if (response.ok) {

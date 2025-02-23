@@ -1,6 +1,7 @@
+//the routs folder is where we define the routes for our app and how they are handled
 const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcryptjs');
+const router = express.Router(); // creating a new router fur user routes
+const bcrypt = require('bcryptjs'); //password hashing
 const Users = require('../models/Users'); // importing the user model
 
 //error handling cors (not needed anymore)
@@ -11,7 +12,7 @@ const Users = require('../models/Users'); // importing the user model
 //     next();
 //   });
 
-//get all users (for testing)
+//get route to fetch all users (for testing)
 router.get('/', async (req, res) => {
     try {
         const users = await Users.find();
@@ -25,6 +26,7 @@ router.get('/', async (req, res) => {
 //registering a user endpoint
 router.post('/register', async (req, res) => {
     //console.log('Request Body: ', req.body);
+    //for debugging
     console.log('Registration attempt:', {
         body: req.body,
         headers: req.headers });
@@ -36,7 +38,7 @@ router.post('/register', async (req, res) => {
         return res.status(400).json({ message: "Please enter all fields" });
     }
 
-    // Checking if the email already exists
+    // Checking if a user with the same username and email already exists
     const existingUser = await Users.findOne({ $or: [{ email: email }, { username: username }] });
     if (existingUser) {
         return res.status(400).json({ message: existingUser.email === email ? "Email already exists" : "Username already exists" });
@@ -55,6 +57,7 @@ router.post('/register', async (req, res) => {
     });
 
     try{ //const savedUser = 
+        //saving the user to the databse
         await newUser.save();
         res.status(201).json({message: 'User sucessfully registered', user: newUser});
     } catch (err) {
@@ -66,24 +69,24 @@ router.post('/register', async (req, res) => {
 
 
 //login user endpoint
-
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    //checking if the user exists
+    //checking if the user exists with the same username
     const user = await Users.findOne({ username });
     if (!user) {
-        return res.status(400).json({ message: "Invalid username or password" });
+        return res.status(400).json({ message: "Invalid username" });
     }
 
     //comparing the password with the hashed password
     const passMatch = await bcrypt.compare(password, user.password);
     if (!passMatch) {
-        return res.status(400).json({ message: "Invalid username or password" });
+        return res.status(400).json({ message: "Invalid password" });
     }
 
     res.status(200).json({ message: "Login successful", user });
 }
 );
 
+//then exporting the to be used in other parts of the app
 module.exports = router;

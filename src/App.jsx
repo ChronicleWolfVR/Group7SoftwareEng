@@ -8,6 +8,7 @@ import HomePage from './components/HomePage/HomePage'; // Ensure you have this c
 import './index.css'; // Ensure you import the CSS file
 
 function App() {
+  const [signInSuccess, setSignInSuccess] = useState(false); // tracks if the signup was successful
   const [formType, setFormType] = useState(null);
   const [fadeClass, setFadeClass] = useState('');
   const [titleFadeClass, setTitleFadeClass] = useState('');
@@ -34,6 +35,12 @@ function App() {
       setFormType('signup');
       setFadeClass('fade-in');
     }, 500);
+  };
+
+  //hadling the sucessful sign up
+  const handleSignUp = () => {
+    setSignInSuccess(true);
+    setFormType('login');
   };
 
   const handleCloseForm = () => {
@@ -75,7 +82,8 @@ function App() {
           <section id="SignUp" className={fadeClass}>
             <Title id="titlep1">Welcome to</Title>
             <Title id="titlep2">Smart Homes</Title>
-            <SignUpForm onClose={handleCloseForm} />
+            <SignUpForm onClose={handleCloseForm} 
+            onSignUpSuccess={handleSignUp} />
           </section>
         )}
       </main>
@@ -88,6 +96,7 @@ function AppWrapper() {
     <Router>
       <Routes>
         <Route path="/home" element={<HomePage />} />
+        <Route path="/login" element={<App formType="login" />} /> //when navigating to login, the login form will be displayed
         <Route path="/" element={<App />} />
       </Routes>
     </Router>

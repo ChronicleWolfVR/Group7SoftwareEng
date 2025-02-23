@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './SignUpForm.css';
+import { useNavigate } from 'react-router-dom';
 
-const SignUpForm = ({ onClose }) => {
+const SignUpForm = ({ onClose, onSignUpSuccess }) => {
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -16,6 +18,7 @@ const SignUpForm = ({ onClose }) => {
     // console.log('Username:', username);
     // console.log('Password:', password);
 
+    //object with user sign up data
     const signUpData = {
       fullName,
       email,
@@ -23,6 +26,7 @@ const SignUpForm = ({ onClose }) => {
       password
     };
 
+    //sending a post request to server
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: 'POST',
@@ -34,6 +38,16 @@ const SignUpForm = ({ onClose }) => {
 
       if (response.ok) {
         console.log('Signed up successfully');
+
+        //calling the onSignUpSuccess function as a prop
+        onSignUpSuccess();
+        //redirecting to the login page/form
+        setTimeout(() => {navigate('/login')}, 100); 
+        //closing the form
+        // onClose();
+
+        // setTimeout(onSignUpSuccess,100);
+
       } else {
         console.log('Error signing up:', data.message);
       }
