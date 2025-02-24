@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Lights.css";
 import Modal from "../Thermostat/Modal/Modal";
+import leaf from "./leaf-1531.svg";
 
 const Lights = () => {
   const [lights, setLights] = useState([
@@ -70,11 +71,20 @@ const Lights = () => {
             ))}
           </div>
         </div>
-        <div className="lightcard"> </div>
+        <div className="lightcard">
+          <div className="light-presets">
+            <button className="saver">
+              <img src={leaf} alt="saver" />
+              Saver</button>
+            <button className="dim">Dim</button>
+            <button className="night">Night</button>
+          </div>
+        </div>
       </div>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <input className="light-input"
+        <input
+          className="light-input"
           type="text"
           value={newLightName}
           onChange={(e) => setNewLightName(e.target.value)}
