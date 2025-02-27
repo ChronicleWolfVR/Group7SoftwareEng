@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import Slider from "rc-slider";
 import "./Lights.css";
 import Modal from "../Thermostat/Modal/Modal";
+import leaf from "./leaf-1531.svg";
+import night from "./night.png"
+import dim from "./half-full.png"
 
 const Lights = () => {
   const [lights, setLights] = useState([
@@ -47,6 +51,9 @@ const Lights = () => {
     setIsModalOpen(false);
   };
 
+  const [mainLightBrightness, setMainLightBrightness] = useState(50);
+  const [floorLampsBrightness, setFloorLampsBrightness] = useState(50);
+
   return (
     <>
       <div className="cards-container">
@@ -70,11 +77,51 @@ const Lights = () => {
             ))}
           </div>
         </div>
-        <div className="lightcard"> </div>
+        <div className="lightcard">
+          <div className="light-presets">
+            <button className="saver">
+              <img src={leaf} alt="saver" />
+              Saver
+            </button>
+            <button className="dim"><img src={dim} alt="dim" /> Dim</button>
+            <button className="night"><img src={night} alt="saver" />Night</button>
+          </div>
+          <div>
+            <div className="light-sliders-container">
+              <div className="light-slider-item">
+                <h3>Main Light</h3>
+                <p>Brightness: {mainLightBrightness}%</p>
+                <Slider
+                  min={0}
+                  max={100}
+                  value={mainLightBrightness}
+                  onChange={(value) => {
+                    setMainLightBrightness(value);
+                    console.log(`Main Light brightness: ${value}`);
+                  }}
+                />
+              </div>
+              <div className="light-slider-item">
+                <h3>Floor Lamps</h3>
+                <p>Brightness: {floorLampsBrightness}%</p>
+                <Slider
+                  min={0}
+                  max={100}
+                  value={floorLampsBrightness}
+                  onChange={(value) => {
+                    setFloorLampsBrightness(value);
+                    console.log(`Floor Lamps brightness: ${value}`);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <input className="light-input"
+        <input
+          className="light-input"
           type="text"
           value={newLightName}
           onChange={(e) => setNewLightName(e.target.value)}
