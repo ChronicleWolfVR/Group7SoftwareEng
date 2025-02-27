@@ -4,6 +4,7 @@ import TabButton from "./TabButton/TabButton";
 import Overiew from "./Overview/Overview";
 import Thermostat from "./Thermostat/Thermostat";
 import Lights from "./Lights/Lights";
+import SmartPlugs from "./SmartPlugs/SmartPlugs";
 import "./HomePage.css";
 
 const HomePage = () => {
@@ -39,7 +40,7 @@ const HomePage = () => {
               <Thermostat />
             </div>
           )}
-          {selectedTab === "Smart Plugs" && <div>Smart Plugs Content</div>}
+          {selectedTab === "Smart Plugs" && <div><SmartPlugs /></div>}
           {selectedTab === "Robots" && <div>Robots Content</div>}
         </div>
       </div>
