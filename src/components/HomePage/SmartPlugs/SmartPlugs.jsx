@@ -5,7 +5,9 @@ const SmartPlugs = () => {
   return (
     <>
       <div className="cards-container">
-    </div>
+        <div className="smartcard"></div>
+        <div className="smartcard"></div>
+      </div>
     </>
   );
 };
