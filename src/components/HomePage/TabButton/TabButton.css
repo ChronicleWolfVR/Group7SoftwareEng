@@ -5,10 +5,13 @@ menu {
   flex: 1;
   gap: 0.5rem;
   list-style: none;
-  box-sizing: border-box; /* Ensure padding and border are included in the width */
+  box-sizing: border-box;
+  justify-content: space-between; /* Distribute buttons evenly across the width */
+  width: 100%; /* Ensure the menu takes the full width of the container */
 }
 
 menu button {
+  flex: 1; /* Allow buttons to grow and fill the available space */
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
@@ -18,8 +21,8 @@ menu button {
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  flex-grow: 1; /* Allow buttons to grow and fill the available space */
   text-align: center; /* Center the text inside the buttons */
+  height: fit-content;
 }
 
 menu button:hover {
@@ -45,4 +48,16 @@ menu button.active {
 
 #tab-content code {
   font-size: 1rem;
+}
+
+/* Media query to stack buttons vertically on small screens */
+@media (max-width: 600px) {
+  menu {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 1rem; /* Add some space between the buttons */
+  }
+
+  menu button {
+    width: 100%; /* Make buttons take the full width of the container */
+  }
 }
