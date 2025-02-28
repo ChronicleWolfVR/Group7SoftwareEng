@@ -2,23 +2,20 @@ import React, { useState } from 'react';
 import './SignUpForm.css';
 import { useNavigate } from 'react-router-dom';
 
+// SignUpForm component
 const SignUpForm = ({ onClose, onSignUpSuccess }) => {
-  const navigate = useNavigate();
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Hook for navigation
+  const [fullName, setFullName] = useState(''); // State variable for full name
+  const [email, setEmail] = useState(''); // State variable for email
+  const [username, setUsername] = useState(''); // State variable for username
+  const [password, setPassword] = useState(''); // State variable for password
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     console.log("Submitting signup form...");
-    e.preventDefault();
-    // Handle sign up logic here
-    // console.log('Full Name:', fullName);
-    // console.log('Email:', email);
-    // console.log('Username:', username);
-    // console.log('Password:', password);
+    e.preventDefault(); // Prevent default form submission behavior
 
-    //object with user sign up data
+    // Object with user sign up data
     const signUpData = {
       fullName,
       email,
@@ -26,24 +23,24 @@ const SignUpForm = ({ onClose, onSignUpSuccess }) => {
       password
     };
 
-    //sending a post request to server
+    // Sending a POST request to the server
     try {
       const response = await fetch('http://localhost:3000/api/users/register', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(signUpData)
+        headers: { 'Content-Type': 'application/json' }, // Setting content type
+        body: JSON.stringify(signUpData) // Converting to JSON as the request body
       });
 
-      const data = await response.json();
+      const data = await response.json(); // Parsing the response
 
       if (response.ok) {
         console.log('Signed up successfully');
 
-        //calling the onSignUpSuccess function as a prop
+        // Calling the onSignUpSuccess function as a prop
         onSignUpSuccess();
-        //redirecting to the login page/form
+        // Redirecting to the login page/form
         setTimeout(() => {navigate('/login')}, 100); 
-        //closing the form
+        // Closing the form
         // onClose();
 
         // setTimeout(onSignUpSuccess,100);
@@ -58,7 +55,10 @@ const SignUpForm = ({ onClose, onSignUpSuccess }) => {
 
   return (
     <div className="form-container">
+      {/* Close button */}
       <button className="close-button" onClick={onClose}>×</button>
+      
+      {/* Sign up form */}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="fullName">Full Name:</label>

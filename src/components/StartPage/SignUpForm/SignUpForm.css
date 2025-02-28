@@ -1,28 +1,32 @@
+/* Importing the Kumbh Sans font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
 
+/* Styling for the form element */
 form {
-  border: 2px solid #ccc;
-  padding: 20px;
-  border-radius: 10px;
-  width: 300px;
-  margin: auto;
-  background: linear-gradient(to top, #cfc7fc, #feeef1);
-  color: black;
+  border: 2px solid #ccc; /* Light grey border */
+  padding: 20px; /* Padding inside the form */
+  border-radius: 10px; /* Rounded corners */
+  width: 300px; /* Fixed width */
+  margin: auto; /* Center the form horizontally */
+  background: linear-gradient(to top, #cfc7fc, #feeef1); /* Gradient background */
+  color: black; /* Text color */
 }
 
+/* Styling for the label elements inside the form */
 form label {
-  display: block;
-  margin-bottom: 5px;
-  text-align: left;
-  font-family: "Kumbh Sans", sans-serif;
-  font-weight: 700;
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space below each label */
+  text-align: left; /* Align text to the left */
+  font-family: "Kumbh Sans", sans-serif; /* Use Kumbh Sans font */
+  font-weight: 700; /* Bold text */
 }
 
+/* Styling for the input elements inside the form */
 form input {
-    height: 2rem;
-    width: calc(100% - 12px);
-    padding: 5px;
-    margin-bottom: 10px;
-    border-radius: 2rem; /* Add this line to make inputs rounded */
-    border: 1px solid #ccc; /* Optional: Add border to inputs */
-  }
+  height: 2rem; /* Fixed height */
+  width: calc(100% - 12px); /* Full width minus padding */
+  padding: 5px; /* Padding inside the input */
+  margin-bottom: 10px; /* Space below each input */
+  border-radius: 2rem; /* Rounded corners for inputs */
+  border: 1px solid #ccc; /* Light grey border */
+}

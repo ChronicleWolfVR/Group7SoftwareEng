@@ -1,7 +1,7 @@
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom/client"; // Import the ReactDOM client for rendering
 
-import App from "./App.jsx";
-import "./index.css";
+import App from "./App.jsx"; // Import the main App component
+import "./index.css"; // Import the global CSS file
 
-const entryPoint = document.getElementById("root");
-ReactDOM.createRoot(entryPoint).render(<App />);
+const entryPoint = document.getElementById("root"); // Get the root element from the HTML
+ReactDOM.createRoot(entryPoint).render(<App />); // Create a root and render the App component into the root element
