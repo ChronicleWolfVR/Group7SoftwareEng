@@ -52,7 +52,6 @@ const Thermostat = () => {
             onChange={handleTemperatureChange}
           />
           <h3>{temperature}°C</h3>
-          <button onClick={handleSubmit}>Submit</button>
         </div>
         <div className="card-humidity">
           <h2>Humidity</h2>
