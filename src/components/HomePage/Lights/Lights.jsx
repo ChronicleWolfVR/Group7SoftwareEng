@@ -3,8 +3,8 @@ import Slider from "rc-slider";
 import "./Lights.css";
 import Modal from "../Thermostat/Modal/Modal";
 import leaf from "./leaf-1531.svg";
-import night from "./night.png"
-import dim from "./half-full.png"
+import night from "./night.png";
+import dim from "./half-full.png";
 
 const Lights = () => {
   const [lights, setLights] = useState([
@@ -83,8 +83,13 @@ const Lights = () => {
               <img src={leaf} alt="saver" />
               Saver
             </button>
-            <button className="dim"><img src={dim} alt="dim" /> Dim</button>
-            <button className="night"><img src={night} alt="saver" />Night</button>
+            <button className="dim">
+              <img src={dim} alt="dim" /> Dim
+            </button>
+            <button className="night">
+              <img src={night} alt="saver" />
+              Night
+            </button>
           </div>
           <div>
             <div className="light-sliders-container">
