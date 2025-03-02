@@ -4,9 +4,9 @@
     gap: 20px;
   }
   
-  .lightcard {
+  .robotcard1 {
     flex: 1;
-    max-width: 50%;
+    max-width: 60%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -18,19 +18,31 @@
     position: relative;
   }
   
-  .card h2, .card p, .card h1, .card h4 {
+  .robotcard2 {
+    flex: 1;
+    max-width: 40%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .robotcard h2,
+  .robotcard p,
+  .robotcard h1,
+  .robotcard h4 {
     margin-bottom: 20px;
     background: linear-gradient(to top, #6a11cb, #1e1649);
     -webkit-background-clip: text;
     color: transparent;
   }
   
-  h1 {
-    text-align: center;
-  }
-  
-  .add-light-button {
-    background-color: #4CAF50;
+  .add-robot-button {
     border: none;
     color: black;
     padding: 15px 32px;
@@ -38,16 +50,14 @@
     text-decoration: none;
     display: block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: auto;
     cursor: pointer;
     border-radius: 8px;
     max-width: max-content;
     position: relative;
-    top: 10px; /* Adjust as needed */
-    left: 10px; /* Adjust as needed */
   }
   
-  .lights-container {
+  .robots-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -55,7 +65,7 @@
     padding-top: 5%;
   }
   
-  .light-bulb-card {
+  .robotcard {
     flex: 1 1 calc(33.333% - 20px); /* 3 per row with gap */
     padding: 20px;
     border: 1px solid #ccc;
@@ -68,7 +78,7 @@
     margin-bottom: 1%; /* Add margin to the bottom for spacing */
   }
   
-  .light-bulb-card h3 {
+  .robotcard1 h3, .robotcard2 h2 {
     margin-bottom: 20px;
     background: linear-gradient(to top, #6a11cb, #1e1649);
     -webkit-background-clip: text;
@@ -113,64 +123,40 @@
   }
   
   input:checked + .slider {
-    background-color: #6a11cb
+    background-color: #6a11cb;
   }
   
   input:checked + .slider:before {
     transform: translateX(26px);
   }
-
-  .light-input {
-    padding: 10px;
-    margin: 10px 0;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    width: calc(100% - 24px); /* Adjust width to fit within the container */
-  }
-
-  .light-presets{
+  
+  .presets-container {
     display: flex;
     justify-content: space-between;
-    gap: 10%;
+    gap: 10px;
     width: 100%;
-    margin-bottom: auto;
-    position: relative;
+    margin-top: 20px;
   }
-
-  .saver, .dim, .night{
-    border-radius: 5% ;
+  
+  .clean, .charge, .pause {
+    border-radius: 5%;
     min-height: fit-content;
     width: 30%;
+    padding: 10px;
+    text-align: center;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
 
-  .saver img,
-  .night img,
-  .dim img {
+  .robotcard2 img {
     width: auto; /* Maintain the aspect ratio */
     height: auto; /* Maintain the aspect ratio */
-    max-width: 100%; /* Ensure the image does not exceed the container's width */
-    max-height: 100%; /* Set a maximum height for the image */
+    max-width: 50%; /* Ensure the image does not exceed the container's width */
+    max-height: 50%; /* Set a maximum height for the image */
     border-radius: 5%;
     object-fit: cover; /* Maintain aspect ratio and cover the container */
     display: block; /* Ensure the text does not align with the image */
     margin: 0 auto; /* Center the image horizontally */
   }
-
   
-
-  .light-sliders-container{
-    color: #6a11cb;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    width: 100%;
-    margin-top: 16%;
-    
-  }

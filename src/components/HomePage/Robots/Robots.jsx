@@ -1,0 +1,60 @@
+import React, { useState } from "react";
+import "./Robots.css";
+import robotvaccum from "./robot-vacuum-cleaner.png";
+
+const Robots = () => {
+  const [robots, setRobots] = useState([
+    { id: 1, name: "TV", isOn: false },
+    { id: 2, name: "Sprinkler", isOn: false },
+    { id: 3, name: "RoboVacuum", isOn: false },
+    { id: 4, name: "RoboCutter", isOn: false },
+  ]);
+
+  const toggleRobot = (id) => {
+    setRobots((prevRobots) =>
+      prevRobots.map((robot) => {
+        if (robot.id === id) {
+          const newState = !robot.isOn;
+          console.log(`${robot.name} is now ${newState ? "ON" : "OFF"}`);
+          return { ...robot, isOn: newState };
+        }
+        return robot;
+      })
+    );
+  };
+
+  return (
+    <div className="cards-container">
+      <div className="robotcard1">
+        <button className="add-robot-button">Add Robot+</button>
+        <div className="robots-container">
+          {robots.map((robot) => (
+            <div key={robot.id} className="robotcard">
+              <h3>{robot.name}</h3>
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={robot.isOn}
+                  onChange={() => toggleRobot(robot.id)}
+                />
+                <span className="slider round"></span>
+              </label>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="robotcard2">
+        <h2>RoboVacuum</h2>
+        <img src={robotvaccum} alt="RoboVacuum" />
+        <div className="presets-container">
+            <button className="clean">Clean</button>
+            <button className="charge">Charge</button>
+            <button className="pause">Pause</button>
+        </div>
+        
+      </div>
+    </div>
+  );
+};
+
+export default Robots;
