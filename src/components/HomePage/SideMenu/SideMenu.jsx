@@ -1,12 +1,16 @@
-import React from 'react';     
+import React from "react";
 import "./SideMenu.css";
 
+// SideMenu component definition
 const SideMenu = ({ isOpen, toggleMenu }) => {
   return (
-    <div className={`side-menu ${isOpen ? 'open' : ''}`}>
+    // Apply 'open' class if isOpen is true
+    <div className={`side-menu ${isOpen ? "open" : ""}`}>
+      {/* Button to close the menu */}
       <button className="menu-close-button" onClick={toggleMenu}>
         ×
       </button>
+      {/* Menu items */}
       <ul>
         <li>Users</li>
         <li>Share</li>
@@ -16,4 +20,5 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
   );
 };
 
+// Export the SideMenu component as the default export
 export default SideMenu;

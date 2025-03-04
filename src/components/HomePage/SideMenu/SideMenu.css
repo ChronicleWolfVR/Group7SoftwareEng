@@ -1,76 +1,91 @@
+/* Styles for the menu toggle button */
 .menu-toggle-button {
-  position: fixed;
-  top: 20px;
-  left: 20px; /* Change from right to left */
-  background: linear-gradient(to right, #cfc7fc, #feeef1);
-  border-radius: 999px;
-  box-shadow: #cfb4dc 0 10px 20px -10px;
-  color: #000000;
-  cursor: pointer;
+  position: fixed; /* Fixes the button's position on the screen */
+  top: 20px; /* Positions the button 20px from the top */
+  left: 20px; /* Positions the button 20px from the left */
+  background: linear-gradient(
+    to right,
+    #cfc7fc,
+    #feeef1
+  ); /* Background gradient */
+  border-radius: 999px; /* Makes the button circular */
+  box-shadow: #cfb4dc 0 10px 20px -10px; /* Adds a shadow to the button */
+  color: #000000; /* Text color */
+  cursor: pointer; /* Changes cursor to pointer on hover */
   font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
     NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
     EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
-    "Noto Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 24px;
-  padding: 8px 18px;
-  user-select: none;
-  touch-action: manipulation;
-  text-align: center;
-  height: 2.5rem;
-  width: 3rem;
-  border: 0;
+    "Noto Sans", sans-serif; /* Font family */
+  font-size: 16px; /* Font size */
+  font-weight: 700; /* Font weight */
+  line-height: 24px; /* Line height */
+  padding: 8px 18px; /* Padding inside the button */
+  user-select: none; /* Prevents text selection */
+  touch-action: manipulation; /* Improves touch interaction */
+  text-align: center; /* Centers text */
+  height: 2.5rem; /* Button height */
+  width: 3rem; /* Button width */
+  border: 0; /* Removes border */
 }
 
+/* Styles for the side menu */
 .side-menu {
-  position: fixed;
-  top: 0;
-  left: -250px; /* Change from right to left */
-  width: 250px;
-  height: 100%;
-  background: linear-gradient(to top, #cfc7fc, #feeef1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: left 0.3s ease; /* Change from right to left */
-  z-index: 1000;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  position: fixed; /* Fixes the menu's position on the screen */
+  top: 0; /* Positions the menu at the top */
+  left: -250px; /* Positions the menu off-screen to the left */
+  width: 250px; /* Menu width */
+  height: 100%; /* Menu height */
+  background: linear-gradient(
+    to top,
+    #cfc7fc,
+    #feeef1
+  ); /* Background gradient */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a shadow to the menu */
+  transition: left 0.3s ease; /* Smooth transition for the left property */
+  z-index: 1000; /* Ensures the menu is on top */
+  padding: 20px; /* Padding inside the menu */
+  display: flex; /* Flexbox layout */
+  flex-direction: column; /* Column layout */
+  align-items: flex-start; /* Aligns items to the start */
 }
 
+/* Styles for the open state of the side menu */
 .side-menu.open {
-  left: 0; /* Change from right to left */
+  left: 0; /* Moves the menu into view */
 }
 
+/* Styles for the menu close button */
 .menu-close-button {
-  width: 100%;
-  align-self: flex-end;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin: 0;
-  box-shadow: none;
-  text-align: right;
+  width: 100%; /* Full width */
+  align-self: flex-end; /* Aligns the button to the end */
+  background: none; /* No background */
+  border: none; /* No border */
+  font-size: 1.5rem; /* Font size */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  margin: 0; /* No margin */
+  box-shadow: none; /* No shadow */
+  text-align: right; /* Aligns text to the right */
 }
 
+/* Styles for the unordered list in the side menu */
 .side-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 1%;
-  width: 100%;
+  list-style: none; /* Removes list bullets */
+  padding: 0; /* No padding */
+  margin: 1%; /* Margin around the list */
+  width: 100%; /* Full width */
 }
 
+/* Styles for the list items in the side menu */
 .side-menu ul li {
-  padding: 10px 0;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  color: #000000;
+  padding: 10px 0; /* Padding inside the list items */
+  width: 100%; /* Full width */
+  text-align: left; /* Aligns text to the left */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  transition: background 0.3s ease; /* Smooth transition for background color */
+  color: #000000; /* Text color */
 }
 
+/* Styles for the hover state of the list items */
 .side-menu ul li:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Background color on hover */
 }

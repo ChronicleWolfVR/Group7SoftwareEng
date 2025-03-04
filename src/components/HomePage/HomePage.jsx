@@ -10,26 +10,32 @@ import SideMenu from "./SideMenu/SideMenu";
 import "./HomePage.css";
 
 const HomePage = () => {
+  // State to keep track of the selected tab
   const [selectedTab, setSelectedTab] = useState("Overview");
+  // State to manage the side menu open/close status
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // List of tabs available
   const tabs = ["Overview", "Thermostat", "Lights", "Smart Plugs", "Robots"];
 
+  // Function to toggle the side menu
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const buttoncheck = () => {
-    console.log("button clicked");
   };
 
   return (
     <>
       <div className="home-page">
-      <button className="menu-button" onClick={toggleMenu}>☰</button>
-      <SideMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        {/* Button to toggle the side menu */}
+        <button className="menu-button" onClick={toggleMenu}>
+          ☰
+        </button>
+        <SideMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
 
+        {/* Title of the page */}
         <Title id="titlep2">Smart Home</Title>
+
+        {/* Tabs menu */}
         <menu id="tabs">
           {tabs.map((tab) => (
             <TabButton
@@ -41,6 +47,8 @@ const HomePage = () => {
             </TabButton>
           ))}
         </menu>
+
+        {/* Content of the selected tab */}
         <div id="tab-content">
           {selectedTab === "Overview" && (
             <div>
