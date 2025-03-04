@@ -6,17 +6,29 @@ import Thermostat from "./Thermostat/Thermostat";
 import Lights from "./Lights/Lights";
 import SmartPlugs from "./SmartPlugs/SmartPlugs";
 import Robots from "./Robots/Robots";
+import SideMenu from "./SideMenu/SideMenu";
 import "./HomePage.css";
 
 const HomePage = () => {
   const [selectedTab, setSelectedTab] = useState("Overview");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const tabs = ["Overview", "Thermostat", "Lights", "Smart Plugs", "Robots"];
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const buttoncheck = () => {
+    console.log("button clicked");
+  };
+
   return (
     <>
-      <button className="menu-button">=</button>
       <div className="home-page">
+      <button className="menu-button" onClick={toggleMenu}>☰</button>
+      <SideMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+
         <Title id="titlep2">Smart Home</Title>
         <menu id="tabs">
           {tabs.map((tab) => (

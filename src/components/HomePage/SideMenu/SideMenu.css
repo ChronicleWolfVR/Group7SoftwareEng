@@ -1,0 +1,76 @@
+.menu-toggle-button {
+  position: fixed;
+  top: 20px;
+  left: 20px; /* Change from right to left */
+  background: linear-gradient(to right, #cfc7fc, #feeef1);
+  border-radius: 999px;
+  box-shadow: #cfb4dc 0 10px 20px -10px;
+  color: #000000;
+  cursor: pointer;
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 8px 18px;
+  user-select: none;
+  touch-action: manipulation;
+  text-align: center;
+  height: 2.5rem;
+  width: 3rem;
+  border: 0;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Change from right to left */
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(to top, #cfc7fc, #feeef1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease; /* Change from right to left */
+  z-index: 1000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.side-menu.open {
+  left: 0; /* Change from right to left */
+}
+
+.menu-close-button {
+  width: 100%;
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 0;
+  box-shadow: none;
+  text-align: right;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 1%;
+  width: 100%;
+}
+
+.side-menu ul li {
+  padding: 10px 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  color: #000000;
+}
+
+.side-menu ul li:hover {
+  background-color: #f0f0f0;
+}
