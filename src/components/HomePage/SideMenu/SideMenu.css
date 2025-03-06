@@ -89,3 +89,35 @@
 .side-menu ul li:hover {
   background-color: #f0f0f0; /* Background color on hover */
 }
+
+.user {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  color: #000000;
+}
+
+.user:last-child {
+  border-bottom: none;
+}
+
+.user h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.user p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+.user-modal h2 {
+  color: #000000;
+}
+
+.user-modal {
+  background: linear-gradient(
+    to top,
+    #cfc7fc,
+    #feeef1
+  );
+}

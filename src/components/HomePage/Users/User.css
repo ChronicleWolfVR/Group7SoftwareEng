@@ -1,0 +1,12 @@
+.user-modal {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .user-modal h2 {
+    margin-bottom: 10px;
+  }
+  
+  .user-modal p {
+    margin-bottom: 0;
+  }
