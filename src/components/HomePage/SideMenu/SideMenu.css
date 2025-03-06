@@ -121,3 +121,26 @@
     #feeef1
   );
 }
+
+.user-modal {
+  /* existing styles */
+}
+
+.user-list {
+  max-height: 300px; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+.scrollable {
+  max-height: 300px; /* Adjust the height as needed */
+  overflow-y: auto;
+}
+
+.add-user{
+  margin-top: 10%;
+}
+
+.delete-user{
+  margin-top: 5%;
+  color: red;
+}
