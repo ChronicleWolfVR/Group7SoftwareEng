@@ -25,11 +25,6 @@ const AddUserForm = ({ onClose, onAddUser }) => {
 
   return (
     <div className="form-container">
-      {/* Close button */}
-      <button className="close-button" onClick={onClose}>
-        ×
-      </button>
-
       {/* Add user form */}
       <form onSubmit={handleSubmit}>
         <div>
