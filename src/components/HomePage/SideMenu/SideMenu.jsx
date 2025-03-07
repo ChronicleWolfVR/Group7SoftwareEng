@@ -4,11 +4,13 @@ import Modal from "../Thermostat/Modal/Modal";
 import User from "../Users/User"; // Import the User component
 import AddUserForm from "./AddUserForm/AddUserForm"; // Import the AddUserForm component
 import Share from "../Share/Share"; // Import the Share component
+import Help from "../Help/Help"; // Import the Help component
 
 // SideMenu component definition
 const SideMenu = ({ isOpen, toggleMenu }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
   const [isAddUserFormOpen, setIsAddUserFormOpen] = useState(false); // State for add user form visibility
   const [users, setUsers] = useState([
     { name: "John Doe", email: "john.doe@example.com" },
@@ -24,6 +26,7 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
     setIsModalOpen(false);
     setIsAddUserFormOpen(false); // Close the add user form when modal is closed
     setIsShareModalOpen(false); // Close the share section when modal is closed
+    setIsHelpModalOpen(false); // Close the help section when modal is closed
   };
 
   const handleAddUser = (user) => {
@@ -41,6 +44,11 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
     setIsModalOpen(true);
   };
 
+  const handleHelpModalOpen = () => {
+    setIsHelpModalOpen(true);
+    setIsModalOpen(true);
+  };
+
   return (
     <>
       {/* Apply 'open' class if isOpen is true */}
@@ -53,16 +61,18 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
         <ul>
           <li onClick={handleOpenModal}>Users</li>
           <li onClick={handleShareModalOpen}>Share</li>
-          <li>Help</li>
+          <li onClick={handleHelpModalOpen}>Help</li>
         </ul>
       </div>
-      {/* Modal to display users or share section */}
+      {/* Modal to display users, share section, or help section */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <div className="user-modal">
-          <h2>{isShareModalOpen ? "Share" : "Users"}</h2>
-          {/* Conditionally render the user list, add user form, or share section */}
+          <h2>{isShareModalOpen ? "Share" : isHelpModalOpen ? "Help" : "Users"}</h2>
+          {/* Conditionally render the user list, add user form, share section, or help section */}
           {isShareModalOpen ? (
             <Share />
+          ) : isHelpModalOpen ? (
+            <Help />
           ) : isAddUserFormOpen ? (
             <AddUserForm
               onClose={() => setIsAddUserFormOpen(false)}
