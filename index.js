@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const usersRouter = require('./routes/users'); //importing user routes
 const cors = require('cors'); //handling cross origin requests
+const Lights = require('./models/Lights');
 
 
 dotenv.config();
@@ -38,7 +39,17 @@ mongoose.connect(process.env.MONGO_URI)
     process.exit(1);
   });
 
-
+app.post('/api/lights', async (req, res) => {
+  try{
+    const {name, status, energy} = req.body;
+    const newLight = new Lights({name, status, energy});
+    await newLight.save();
+    res.status(201).json(newLight);
+  } catch(err) {
+    console.error('Error adding light:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 

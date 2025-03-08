@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Slider from "rc-slider";
 import "./Lights.css";
 import Modal from "../Thermostat/Modal/Modal";
@@ -8,15 +8,32 @@ import dim from "./half-full.png";
 
 const Lights = () => {
   const [lights, setLights] = useState([
-    { id: 1, name: "Master Bedroom", isOn: false },
-    { id: 2, name: "Bedroom 1", isOn: false },
-    { id: 3, name: "Guest Room", isOn: false },
-    { id: 4, name: "Dining Room", isOn: false },
-    { id: 5, name: "Living Room", isOn: false },
-    { id: 6, name: "Kitchen", isOn: false },
+    // { id: 1, name: "Master Bedroom", isOn: false },
+    // { id: 2, name: "Bedroom 1", isOn: false },
+    // { id: 3, name: "Guest Room", isOn: false },
+    // { id: 4, name: "Dining Room", isOn: false },
+    // { id: 5, name: "Living Room", isOn: false },
+    // { id: 6, name: "Kitchen", isOn: false },
   ]);
   const [newLightName, setNewLightName] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+  useEffect(() => {
+    const fetchLights = async () => {
+      try{
+        const response = await fetch("http://localhost:3000/api/lights");
+        if(!response.ok) throw new Error("Failed to fetch lights");
+
+        const data = await response.json();
+        setLights(data);
+      } catch (error) {
+        console.error("Error fetching lights:", error);
+      }
+    };
+
+    fetchLights();
+  }, []);
 
   const toggleLight = (id) => {
     setLights((prevLights) =>
@@ -31,17 +48,45 @@ const Lights = () => {
     );
   };
 
-  const addLight = () => {
-    if (newLightName.trim() === "") return;
+  // const addLight = () => {
+  //   if (newLightName.trim() === "") return;
+  //   const newLight = {
+  //     id: lights.length + 1,
+  //     name: newLightName,
+  //     isOn: false,
+  //   };
+  //   setLights([...lights, newLight]);
+  //   setNewLightName("");
+  //   setIsModalOpen(false); // Close the modal after adding a new light
+  // };
+
+  const addLight = async () => {
+    if (!newLightName.trim()) return;
+
     const newLight = {
-      id: lights.length + 1,
       name: newLightName,
-      isOn: false,
+      status: false,
+      energy: 0
     };
-    setLights([...lights, newLight]);
+
+    try {
+      const response = await fetch("http://localhost:3000/api/lights", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newLight),
+      });
+
+      if (!response.ok) throw new Error("Failed to add light");
+    
+
+    const addedLight = await response.json();
+    setLights((prevLights) => [...prevLights, addedLight]);
     setNewLightName("");
-    setIsModalOpen(false); // Close the modal after adding a new light
-  };
+    setIsModalOpen(false);
+  } catch(err) {
+    console.error("Error adding light:", err);
+  }
+};
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
