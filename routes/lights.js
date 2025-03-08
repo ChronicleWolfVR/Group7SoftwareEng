@@ -33,8 +33,7 @@ router.patch('/:id', async (req, res) => {
     try {
         const updatedLight = await Lights.findByIdAndUpdate(
             req.params.id,
-            //req.body,
-            {status: req.body.status},
+            req.body,
             { new: true }
         );
         if (!updatedLight) {
