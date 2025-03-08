@@ -35,17 +35,48 @@ const Lights = () => {
     fetchLights();
   }, []);
 
-  const toggleLight = (id) => {
-    setLights((prevLights) =>
-      prevLights.map((light) => {
-        if (light.id === id) {
-          const newState = !light.isOn;
-          console.log(`${light.name} is now ${newState ? "ON" : "OFF"}`);
-          return { ...light, isOn: newState };
-        }
-        return light;
-      })
-    );
+  // const toggleLight = (id) => {
+  //   setLights((prevLights) =>
+  //     prevLights.map((light) => {
+  //       if (light.id === id) {
+  //         const newState = !light.isOn;
+  //         console.log(`${light.name} is now ${newState ? "ON" : "OFF"}`);
+  //         return { ...light, isOn: newState };
+  //       }
+  //       return light;
+  //     })
+  //   );
+  // };
+
+  const toggleLight = async (id) => {
+    try {
+      console.log("Toggling light:", id); // Debugging
+      const lightToToggle = lights.find(light => light._id === id);
+      if(!lightToToggle){
+        console.error("Light not found");
+        return;
+      }
+      const newStatus = !lightToToggle.status;
+      console.log("New status:", newStatus);
+  
+      const response = await fetch(`http://localhost:3000/api/lights/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+  
+      if (!response.ok) throw new Error("Failed to update light status");
+  
+      const updatedLight = await response.json();
+  
+      setLights((prevLights) =>
+        prevLights.map((light) =>
+          light._id === id ? { ...light, status: newStatus } : light
+        )
+      );
+    } catch (error) {
+      console.error("Error toggling light:", error);
+    }
   };
 
   // const addLight = () => {
@@ -70,16 +101,22 @@ const Lights = () => {
     };
 
     try {
+      console.log("Adding light:", newLight); // Debugging
       const response = await fetch("http://localhost:3000/api/lights", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newLight),
       });
 
-      if (!response.ok) throw new Error("Failed to add light");
-    
+      if (!response.ok) {
+        const error = await response.json();
+        console.error("Failed to add light:", error);
+        throw new Error("Failed to add light");
+      }
 
     const addedLight = await response.json();
+    console.log("Added light:", addedLight);
+
     setLights((prevLights) => [...prevLights, addedLight]);
     setNewLightName("");
     setIsModalOpen(false);
@@ -108,13 +145,13 @@ const Lights = () => {
           </button>
           <div className="lights-container">
             {lights.map((light) => (
-              <div className="light-bulb-card" key={light.id}>
+              <div className="light-bulb-card" key={light._id}>
                 <h3>{light.name}</h3>
                 <label className="switch">
                   <input
                     type="checkbox"
-                    checked={light.isOn}
-                    onChange={() => toggleLight(light.id)}
+                    checked={light.status}
+                    onChange={() => toggleLight(light._id)}
                   />
                   <span className="slider round"></span>
                 </label>
