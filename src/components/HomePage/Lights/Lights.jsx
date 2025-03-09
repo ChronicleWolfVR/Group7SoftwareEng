@@ -131,7 +131,7 @@ const Lights = () => {
   }
 };
 
-=======
+
   // Function to toggle the state of a light (on/off)
 //   const toggleLight = (id) => {
 //     setLights((prevLights) =>
