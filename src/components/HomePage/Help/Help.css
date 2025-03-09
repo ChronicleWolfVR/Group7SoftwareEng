@@ -1,0 +1,61 @@
+.help-paragraph{
+    background: linear-gradient(to top, #6a11cb, #1e1649);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-align: center;
+    width: 100%;
+  }
+
+
+
+/* Container for cards */
+.help-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%; /* Ensure the container takes up the full width */
+    padding: 20px; /* Add some padding for better spacing */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    max-height: 80vh; /* Adjust the height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+  
+  /* Individual card styling */
+  .help-card {
+    flex: 1 1 calc(33.333% - 20px); /* Ensure three cards per row with gap */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  /* Styling for text elements inside cards */
+  .help-card h3,
+  .help-card p,
+  .help-card h1,
+  .help-card h4 {
+    margin-bottom: 20px;
+    background: linear-gradient(to top, #6a11cb, #1e1649);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .help-card {
+      flex: 1 1 calc(50% - 20px); /* Two cards per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .help-card {
+      flex: 1 1 100%; /* One card per row on small screens */
+    }
+  }

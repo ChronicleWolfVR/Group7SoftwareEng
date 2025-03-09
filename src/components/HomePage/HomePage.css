@@ -1,44 +1,43 @@
-/* Add this to src/index.css or a new CSS file for HomePage */
-.home-page {
-    position: relative;
-    padding: 20px;
-  }
-  
-  .menu-button {
-    background: linear-gradient(to right, #cfc7fc, #feeef1); /* Sets the background gradient for the close button */
-    border-radius: 999px; /* Makes the close button circular */
-    box-shadow: #cfb4dc 0 10px 20px -10px; /* Adds a shadow to the close button */
-    color: #000000; /* Sets the text color for the close button */
-    cursor: pointer; /* Changes the cursor to a pointer when hovering over the close button */
-    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
-      NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
-      EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
-      "Noto Sans", sans-serif; /* Sets the font family for the close button */
-    font-size: 16px; /* Sets the font size for the close button */
-    font-weight: 700; /* Sets the font weight for the close button */
-    line-height: 24px; /* Sets the line height for the close button */
-    padding: 8px 18px; /* Adds padding to the close button */
-    user-select: none; /* Prevents text selection on the close button */
-    touch-action: manipulation; /* Disables default touch actions */
-    text-align: center; /* Centers text inside the close button */
-    height: 2.5rem; /* Sets the height of the close button */
-    width: 3rem; /* Sets the width of the close button */
-    border: 0; /* Removes the border of the close button */
-    position: absolute; /* Positions the close button absolutely */
-    top: 2%; /* Aligns the close button to the top */
-    left: 2%; /* Aligns the close button to the left */
-    transform: translateX(-50%); /* Centers the close button horizontally */
-  }
+.menu-button {
+  background: linear-gradient(
+    to right,
+    #cfc7fc,
+    #feeef1
+  ); /* Sets the background gradient for the close button */
+  border-radius: 999px; /* Makes the close button circular */
+  box-shadow: #cfb4dc 0 10px 20px -10px; /* Adds a shadow to the close button */
+  color: #000000; /* Sets the text color for the close button */
+  cursor: pointer; /* Changes the cursor to a pointer when hovering over the close button */
+  font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", sans-serif; /* Sets the font family for the close button */
+  font-size: 16px; /* Sets the font size for the close button */
+  font-weight: 700; /* Sets the font weight for the close button */
+  line-height: 24px; /* Sets the line height for the close button */
+  padding: 8px 18px; /* Adds padding to the close button */
+  user-select: none; /* Prevents text selection on the close button */
+  touch-action: manipulation; /* Disables default touch actions */
+  text-align: center; /* Centers text inside the close button */
+  height: 2.5rem; /* Sets the height of the close button */
+  width: 3rem; /* Sets the width of the close button */
+  border: 0; /* Removes the border of the close button */
+  position: absolute; /* Positions the close button absolutely */
+  top: 2%; /* Aligns the close button to the top */
+  left: 2%; /* Aligns the close button to the left */
+  transform: translateX(-50%); /* Centers the close button horizontally */
+}
 
-  #centered-container, #tab-container› {
-    display: flex; /* Uses flexbox for layout */
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    height: 100vh; /* Sets the height to 100% of the viewport height */
-  }
+#centered-container,
+#tab-container› {
+  display: flex; /* Uses flexbox for layout */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  height: 100vh; /* Sets the height to 100% of the viewport height */
+}
 
-  #tabs {
-    display: flex; /* Uses flexbox for layout */
-    gap: 1rem; /* Adds space between tab buttons */
-    flex: 1;
-  }
+#tabs {
+  display: flex; /* Uses flexbox for layout */
+  gap: 1rem; /* Adds space between tab buttons */
+  flex: 1;
+}

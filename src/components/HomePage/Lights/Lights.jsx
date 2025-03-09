@@ -7,6 +7,7 @@ import night from "./night.png";
 import dim from "./half-full.png";
 
 const Lights = () => {
+  // State to manage the list of lights
   const [lights, setLights] = useState([
     // { id: 1, name: "Master Bedroom", isOn: false },
     // { id: 2, name: "Bedroom 1", isOn: false },
@@ -15,8 +16,13 @@ const Lights = () => {
     // { id: 5, name: "Living Room", isOn: false },
     // { id: 6, name: "Kitchen", isOn: false },
   ]);
+
+  // State to manage the name of a new light
   const [newLightName, setNewLightName] = useState("");
+
+  // State to manage the visibility of the modal
   const [isModalOpen, setIsModalOpen] = useState(false);
+
 
 
   useEffect(() => {
@@ -93,7 +99,7 @@ const Lights = () => {
 
   const addLight = async () => {
     if (!newLightName.trim()) return;
-
+    
     const newLight = {
       name: newLightName,
       status: false,
@@ -125,15 +131,40 @@ const Lights = () => {
   }
 };
 
+=======
+  // Function to toggle the state of a light (on/off)
+//   const toggleLight = (id) => {
+//     setLights((prevLights) =>
+//       prevLights.map((light) => {
+//         if (light.id === id) {
+//           const newState = !light.isOn;
+//           console.log(`${light.name} is now ${newState ? "ON" : "OFF"}`);
+//           return { ...light, isOn: newState };
+//         }
+//         return light;
+//       })
+//     );
+//   };
+
+  // Function to add a new light to the list
+
+
+
+
+  // Function to open the modal
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
+  // Function to close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
+  // State to manage the brightness of the main light
   const [mainLightBrightness, setMainLightBrightness] = useState(50);
+
+  // State to manage the brightness of the floor lamps
   const [floorLampsBrightness, setFloorLampsBrightness] = useState(50);
 
   return (

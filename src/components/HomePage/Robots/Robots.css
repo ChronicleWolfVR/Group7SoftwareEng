@@ -1,162 +1,181 @@
+/* Container for the cards */
 .cards-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  
-  .robotcard1 {
-    flex: 1;
-    max-width: 60%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-  
-  .robotcard2 {
-    flex: 1;
-    max-width: 40%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-  }
-  
-  .robotcard h2,
-  .robotcard p,
-  .robotcard h1,
-  .robotcard h4 {
-    margin-bottom: 20px;
-    background: linear-gradient(to top, #6a11cb, #1e1649);
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  
-  .add-robot-button {
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
-    margin: 1%;
-    cursor: pointer;
-    border-radius: 8px;
-    max-width: max-content;
-    position: relative;
-  }
-  
-  .robots-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding-top: 5%;
-  }
-  
-  .robotcard {
-    flex: 1 1 calc(33.333% - 20px); /* 3 per row with gap */
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: left;
-    margin-bottom: 1%; /* Add margin to the bottom for spacing */
-  }
-  
-  .robotcard1 h3, .robotcard2 h2 {
-    margin-bottom: 20px;
-    background: linear-gradient(to top, #6a11cb, #1e1649);
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 34px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider {
-    background-color: #6a11cb;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
-  .presets-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  .clean, .charge, .pause {
-    border-radius: 5%;
-    min-height: fit-content;
-    width: 30%;
-    padding: 10px;
-    text-align: center;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
 
-  .robotcard2 img {
-    width: auto; /* Maintain the aspect ratio */
-    height: auto; /* Maintain the aspect ratio */
-    max-width: 50%; /* Ensure the image does not exceed the container's width */
-    max-height: 50%; /* Set a maximum height for the image */
-    border-radius: 5%;
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
-    display: block; /* Ensure the text does not align with the image */
-    margin: 0 auto; /* Center the image horizontally */
-  }
-  
+/* Styles for the first robot card */
+.robotcard1 {
+  flex: 1;
+  max-width: 60%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Styles for the second robot card */
+.robotcard2 {
+  flex: 1;
+  max-width: 40%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Gradient text styles for headings and paragraphs inside robot cards */
+.robotcard h2,
+.robotcard p,
+.robotcard h1,
+.robotcard h4 {
+  margin-bottom: 20px;
+  background: linear-gradient(to top, #6a11cb, #1e1649);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Styles for the add robot button */
+.add-robot-button {
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 1%;
+  cursor: pointer;
+  border-radius: 8px;
+  max-width: max-content;
+  position: relative;
+}
+
+/* Container for the robots */
+.robots-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding-top: 5%;
+}
+
+/* General styles for robot cards */
+.robotcard {
+  flex: 1 1 calc(33.333% - 20px); /* 3 per row with gap */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: left;
+  margin-bottom: 1%; /* Add margin to the bottom for spacing */
+}
+
+/* Gradient text styles for specific headings inside robot cards */
+.robotcard1 h3,
+.robotcard2 h2 {
+  margin-bottom: 20px;
+  background: linear-gradient(to top, #6a11cb, #1e1649);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Styles for the switch component */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide the default checkbox input */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Styles for the slider inside the switch */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* Styles for the slider knob */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Styles for the slider when checked */
+input:checked + .slider {
+  background-color: #6a11cb;
+}
+
+/* Move the slider knob when checked */
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Container for the preset buttons */
+.presets-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Styles for the preset buttons */
+.clean,
+.charge,
+.pause {
+  border-radius: 5%;
+  min-height: fit-content;
+  width: 30%;
+  padding: 10px;
+  text-align: center;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Styles for the image inside the second robot card */
+.robotcard2 img {
+  width: auto; /* Maintain the aspect ratio */
+  height: auto; /* Maintain the aspect ratio */
+  max-width: 50%; /* Ensure the image does not exceed the container's width */
+  max-height: 50%; /* Set a maximum height for the image */
+  border-radius: 5%;
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  display: block; /* Ensure the text does not align with the image */
+  margin: 0 auto; /* Center the image horizontally */
+}

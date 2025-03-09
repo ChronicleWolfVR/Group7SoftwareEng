@@ -1,53 +1,60 @@
+/* Style for the menu container */
 menu {
-  margin: 1rem 0;
-  padding: 0;
-  display: flex;
-  flex: 1;
-  gap: 0.5rem;
-  list-style: none;
-  box-sizing: border-box;
+  margin: 1rem 0; /* Add margin above and below the menu */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Use flexbox for layout */
+  flex: 1; /* Allow the menu to grow and fill the available space */
+  gap: 0.5rem; /* Add space between the buttons */
+  list-style: none; /* Remove default list styling */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
   justify-content: space-between; /* Distribute buttons evenly across the width */
   width: 100%; /* Ensure the menu takes the full width of the container */
 }
 
+/* Style for the buttons inside the menu */
 menu button {
   flex: 1; /* Allow buttons to grow and fill the available space */
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 6px;
-  background-color: transparent;
-  color: #6a26b4;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  padding: 0.5rem 1rem; /* Add padding inside the buttons */
+  border: none; /* Remove default border */
+  border-radius: 6px; /* Round the corners of the buttons */
+  background-color: transparent; /* Make the background transparent */
+  color: #6a26b4; /* Set the text color */
+  font-family: "Roboto Condensed", sans-serif; /* Set the font family */
+  font-size: 1rem; /* Set the font size */
+  cursor: pointer; /* Change the cursor to a pointer on hover */
+  transition: all 0.2s ease-in-out; /* Add a transition effect */
   text-align: center; /* Center the text inside the buttons */
-  height: fit-content;
+  height: fit-content; /* Adjust the height to fit the content */
 }
 
+/* Style for the buttons on hover */
 menu button:hover {
-  background-color: #1b082f;
-  color: white;
+  background-color: #1b082f; /* Change the background color on hover */
+  color: white; /* Change the text color on hover */
 }
 
+/* Style for the active button */
 menu button.active {
-  background-color: #7925d3;
-  color: white;
+  background-color: #7925d3; /* Set the background color for the active button */
+  color: white; /* Set the text color for the active button */
 }
 
+/* Style for the tab content container */
 #tab-content {
-  padding: 1rem;
-  border-radius: 6px;
-  background-color: #2f1d43;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  padding: 1rem; /* Add padding inside the container */
+  border-radius: 6px; /* Round the corners of the container */
+  background-color: #2f1d43; /* Set the background color */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Add a shadow effect */
 }
 
+/* Style for the headings inside the tab content */
 #tab-content h3 {
-  margin: 0;
+  margin: 0; /* Remove default margin */
 }
 
+/* Style for the code elements inside the tab content */
 #tab-content code {
-  font-size: 1rem;
+  font-size: 1rem; /* Set the font size */
 }
 
 /* Media query to stack buttons vertically on small screens */
