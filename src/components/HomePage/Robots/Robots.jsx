@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Robots.css";
 import robotvaccum from "./robot-vacuum-cleaner.png";
 import Modal from "../Thermostat/Modal/Modal";
@@ -18,14 +18,81 @@ const Robots = () => {
   // State to manage the modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Function to add a new robot to the list
-  const addRobot = () => {
-    if (newRobotName.trim() === "") return;
-    const newRobot = { id: robots.length + 1, name: newRobotName, isOn: false };
-    setRobots([...robots, newRobot]);
-    setNewRobotName("");
-    setIsModalOpen(false);
+  //fetching robots from the backend
+  useEffect(() => {
+    const fetchRobots = async () => {
+      try{
+        const response = await fetch("http://localhost:3000/api/robots");
+
+        if (!response.ok) throw new Error("Failed to fetch robots");
+        const data = await response.json();
+        setRobots(data);
+      } catch (error){
+        console.error("Error fetching robots:", error);
+      }
+    };
+
+    fetchRobots();
+  } , []);
+
+
+  const addRobot = async () => {
+    if (!newRobotName.trim()) return;
+
+    const newRobot = {
+      name: newRobotName,
+      status: false,
+      energy: 0,
+    };
+
+    try {
+      const response = await fetch("http://localhost:3000/api/robots", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(newRobot),
+      });
+
+      if (!response.ok) throw new Error("Failed to add robot");
+
+      const addedRobot = await response.json();
+      setRobots((prevRobots) => [...prevRobots, addedRobot]);
+      setNewRobotName("");
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Error adding robot:", error);
+    }
+    };
+
+  const toggleRobot = async (id) => {
+    try{
+      const robotToToggle = robots.find((robot) => robot._id === id);
+      const newStatus = !robotToToggle.status;
+
+      const response = await fetch(`http://localhost:3000/api/robots/${id}`, 
+        {
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({status: newStatus}),
+      });
+
+      if (!response.ok) throw new Error("Failed to toggle robots status");
+
+      //const updatedRobot = await response.json();
+      setRobots((prevRobots) => prevRobots.map((robot) => robot._id === id ? {...robot, status: newStatus} : robot));
+    } catch (error) {
+      console.error("Error toggling robot status:", error);
+    }
   };
+
+
+  // Function to add a new robot to the list
+  // const addRobot = () => {
+  //   if (newRobotName.trim() === "") return;
+  //   const newRobot = { id: robots.length + 1, name: newRobotName, isOn: false };
+  //   setRobots([...robots, newRobot]);
+  //   setNewRobotName("");
+  //   setIsModalOpen(false);
+  // };
 
   // Function to open the modal
   const handleOpenModal = () => {
@@ -38,18 +105,18 @@ const Robots = () => {
   };
 
   // Function to toggle the state of a robot (on/off)
-  const toggleRobot = (id) => {
-    setRobots((prevRobots) =>
-      prevRobots.map((robot) => {
-        if (robot.id === id) {
-          const newState = !robot.isOn;
-          console.log(`${robot.name} is now ${newState ? "ON" : "OFF"}`);
-          return { ...robot, isOn: newState };
-        }
-        return robot;
-      })
-    );
-  };
+  // const toggleRobot = (id) => {
+  //   setRobots((prevRobots) =>
+  //     prevRobots.map((robot) => {
+  //       if (robot.id === id) {
+  //         const newState = !robot.isOn;
+  //         console.log(`${robot.name} is now ${newState ? "ON" : "OFF"}`);
+  //         return { ...robot, isOn: newState };
+  //       }
+  //       return robot;
+  //     })
+  //   );
+  // };
 
   return (
     <>
@@ -62,13 +129,13 @@ const Robots = () => {
           <div className="robots-container">
             {/* Render the list of robots */}
             {robots.map((robot) => (
-              <div key={robot.id} className="robotcard">
+              <div key={robot._id} className="robotcard">
                 <h3>{robot.name}</h3>
                 <label className="switch">
                   <input
                     type="checkbox"
-                    checked={robot.isOn}
-                    onChange={() => toggleRobot(robot.id)}
+                    checked={robot.status}
+                    onChange={() => toggleRobot(robot._id)}
                   />
                   <span className="slider round"></span>
                 </label>
