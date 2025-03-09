@@ -6,29 +6,33 @@ import Modal from "./Modal/Modal";
 import ScheduleForm from "./ScheduleForm/ScheduleForm";
 
 const Thermostat = () => {
-  const [temperature, setTemperature] = useState(20);
-  const [isChanging, setIsChanging] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [temperature, setTemperature] = useState(20); // State to store the current temperature
+  const [isChanging, setIsChanging] = useState(false); // State to track if the temperature is being changed
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to control the visibility of the modal
 
+  // Function to handle temperature change
   const handleTemperatureChange = (value) => {
     setTemperature(value);
     setIsChanging(true);
   };
 
+  // Function to handle temperature submission
   const handleSubmit = () => {
-    // Submit the temperature value
     console.log("Temperature submitted:", temperature);
     // Add your submission logic here (e.g., API call)
   };
 
+  // Function to handle the "View More" button click
   const handleViewMoreClick = () => {
     setIsModalOpen(true);
   };
 
+  // Function to handle modal close
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
+  // Effect to handle delayed submission of temperature change
   useEffect(() => {
     if (isChanging) {
       const timer = setTimeout(() => {
@@ -36,7 +40,7 @@ const Thermostat = () => {
         setIsChanging(false);
       }, 2000); // 2 seconds delay
 
-      return () => clearTimeout(timer);
+      return () => clearTimeout(timer); // Cleanup the timer on component unmount or when dependencies change
     }
   }, [temperature, isChanging]);
 
@@ -45,6 +49,7 @@ const Thermostat = () => {
       <div className="cards-container">
         <div className="card">
           <h2>Temperature</h2>
+          {/* Slider to adjust the temperature */}
           <Slider
             min={10}
             max={30}
@@ -55,20 +60,24 @@ const Thermostat = () => {
         </div>
         <div className="card-humidity">
           <h2>Humidity</h2>
+          {/* Displaying static humidity value */}
           <h3>50%</h3>
         </div>
         <div className="card-outside-temperature">
           <h2>Outside Temperature</h2>
+          {/* Displaying static outside temperature value */}
           <h3>15°C</h3>
         </div>
         <div className="card">
           <h2>Schedule</h2>
           <h3>Set Schedule</h3>
+          {/* Button to open the schedule modal */}
           <button onClick={handleViewMoreClick}>View More</button>
         </div>
       </div>
 
       <div>
+        {/* Modal component to display the schedule form */}
         <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           <ScheduleForm />
         </Modal>

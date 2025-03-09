@@ -12,6 +12,7 @@ import {
 } from "recharts";
 
 const Overview = () => {
+  // Data for the line chart
   const data = [
     { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
     { name: "Page B", uv: 300, pv: 4567, amt: 1398 },
@@ -20,6 +21,7 @@ const Overview = () => {
     { name: "Page E", uv: 189, pv: 4800, amt: 2181 },
   ];
 
+  // Data for the pie chart
   const pieData = [
     { name: "Group A", value: 400 },
     { name: "Group B", value: 300 },
@@ -29,11 +31,13 @@ const Overview = () => {
     { name: "Group F", value: 189 },
   ];
 
+  // Percentage difference for energy usage
   const percentageDifference = 20 + "% lower";
 
   return (
     <>
       <div className="cards-container">
+        {/* Card for Energy Consumption Statistic */}
         <div className="card">
           <h2>Energy Consumption Statistic</h2>
           <LineChart
@@ -51,6 +55,8 @@ const Overview = () => {
           <p>The energy usage is {percentageDifference} than last week</p>
           <button>View More</button>
         </div>
+
+        {/* Card for Energy Consumption Usage */}
         <div className="card">
           <h2>Energy Consumption Usage</h2>
           <PieChart width={400} height={200}>
@@ -72,6 +78,8 @@ const Overview = () => {
           <h4>Progress</h4>
           <h2>45%</h2>
         </div>
+
+        {/* Card for Current Energy Usage */}
         <div className="card">
           <h2>Current Energy Usage</h2>
           <h1>2.1kw</h1>
