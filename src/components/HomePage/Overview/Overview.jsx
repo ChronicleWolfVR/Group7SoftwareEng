@@ -9,26 +9,27 @@ import {
   Tooltip,
   PieChart,
   Pie,
+  Label,
 } from "recharts";
 
 const Overview = () => {
   // Data for the line chart
   const data = [
-    { name: "Page A", uv: 400, pv: 2400, amt: 2400 },
-    { name: "Page B", uv: 300, pv: 4567, amt: 1398 },
-    { name: "Page C", uv: 200, pv: 9800, amt: 9800 },
-    { name: "Page D", uv: 278, pv: 3908, amt: 2000 },
-    { name: "Page E", uv: 189, pv: 4800, amt: 2181 },
+    { name: "October", kw: 1300, pv: 2400, amt: 2400 },
+    { name: "November", kw: 2500, pv: 4567, amt: 1398 },
+    { name: "December", kw: 2600, pv: 9800, amt: 9800 },
+    { name: "January", kw: 2400, pv: 3908, amt: 2000 },
+    { name: "February", kw: 2200, pv: 4800, amt: 2181 },
   ];
 
   // Data for the pie chart
   const pieData = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
-    { name: "Group E", value: 278 },
-    { name: "Group F", value: 189 },
+    { name: "Heating", value: 300 },
+    { name: "Lights", value: 250 },
+    { name: "Air Conditioning", value: 330 },
+    { name: "Other Smart Devices", value: 400 },
+    { name: "Robots", value: 600 },
+    { name: "Other", value: 320 },
   ];
 
   // Percentage difference for energy usage
@@ -44,15 +45,15 @@ const Overview = () => {
             width={300}
             height={200}
             data={data}
-            margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+            margin={{ top: 5, right: 20, bottom: 15, left: 0 }}
           >
-            <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+            <Line type="monotone" dataKey="kw" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
           </LineChart>
-          <p>The energy usage is {percentageDifference} than last week</p>
+          <p>The energy usage is {percentageDifference} than last month</p>
           <button>View More</button>
         </div>
 
@@ -70,6 +71,7 @@ const Overview = () => {
               outerRadius={100}
               fill="#8884d8"
             />
+            <Tooltip />
           </PieChart>
           <h4>Monthly energy usage</h4>
           <h2>165 kw</h2>
