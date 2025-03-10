@@ -49,3 +49,58 @@ h1 {
   width: 100%;
   margin: 20px 0;
 }
+
+/* Media queries for responsive design */
+@media (max-width: 1000px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 80%;
+    margin-bottom: 2%;
+  }
+}
+
+@media (max-width: 768px) {
+  .EnergyConsumption {
+    padding: 1.5%;
+  }
+
+  .card {
+    padding: 1.5%;
+  }
+
+  .card h2,
+  .card p,
+  .card h1,
+  .card h4 {
+    margin-bottom: 1.5%;
+  }
+
+  .card button {
+    margin: 1.5% 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .EnergyConsumption {
+    padding: 1%;
+  }
+
+  .card {
+    padding: 1%;
+  }
+
+  .card h2,
+  .card p,
+  .card h1,
+  .card h4 {
+    margin-bottom: 1%;
+  }
+
+  .card button {
+    margin: 1% 0;
+  }
+}

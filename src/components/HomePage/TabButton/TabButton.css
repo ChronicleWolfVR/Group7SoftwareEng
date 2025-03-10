@@ -58,7 +58,7 @@ menu button.active {
 }
 
 /* Media query to stack buttons vertically on small screens */
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   menu {
     flex-direction: column; /* Stack buttons vertically */
     gap: 1rem; /* Add some space between the buttons */

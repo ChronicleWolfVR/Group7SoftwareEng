@@ -10,6 +10,7 @@ import {
   PieChart,
   Pie,
   Label,
+  ResponsiveContainer
 } from "recharts";
 
 const Overview = () => {
@@ -35,24 +36,29 @@ const Overview = () => {
   // Percentage difference for energy usage
   const percentageDifference = 20 + "% lower";
 
+  // Formatter for the tooltip
+  const tooltipFormatter = (value, name, props) => {
+    return [`${value} kW`, name];
+  };
+
   return (
     <>
       <div className="cards-container">
         {/* Card for Energy Consumption Statistic */}
         <div className="card">
           <h2>Energy Consumption Statistic</h2>
-          <LineChart
-            width={300}
-            height={200}
-            data={data}
-            margin={{ top: 5, right: 20, bottom: 15, left: 0 }}
-          >
-            <Line type="monotone" dataKey="kw" stroke="#8884d8" />
-            <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-          </LineChart>
+          <ResponsiveContainer width="100%" height={200}>
+            <LineChart
+              data={data}
+              margin={{ top: 5, right: 20, bottom: 15, left: 0 }}
+            >
+              <Line type="monotone" dataKey="kw" stroke="#8884d8" />
+              <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip formatter={tooltipFormatter} />
+            </LineChart>
+          </ResponsiveContainer>
           <p>The energy usage is {percentageDifference} than last month</p>
           <button>View More</button>
         </div>
@@ -60,28 +66,30 @@ const Overview = () => {
         {/* Card for Energy Consumption Usage */}
         <div className="card">
           <h2>Energy Consumption Usage</h2>
-          <PieChart width={400} height={200}>
-            <Pie
-              dataKey="value"
-              startAngle={360}
-              endAngle={0}
-              data={pieData}
-              cx="50%"
-              cy="50%"
-              outerRadius={100}
-              fill="#8884d8"
-            />
-            <Tooltip />
-          </PieChart>
+          <ResponsiveContainer width="100%" height={200}>
+            <PieChart>
+              <Pie
+                dataKey="value"
+                startAngle={360}
+                endAngle={0}
+                data={pieData}
+                cx="50%"
+                cy="50%"
+                outerRadius={100}
+                fill="#8884d8"
+              />
+              <Tooltip formatter={tooltipFormatter} />
+            </PieChart>
+          </ResponsiveContainer>
           <h4>Monthly energy usage</h4>
-          <h2>165 kw</h2>
+          <h2>165 kW</h2>
           <h4>Monthly Goal</h4>
-          <h2>Reduce usage by 300 kw</h2>
+          <h2>Reduce usage by 300 kW</h2>
           <h4>Progress</h4>
           <h2>45%</h2>
         </div>
 
-        {/* Card for Current Energy Usage */}
+          {/* Card for Current Energy Usage */}
         <div className="card">
           <h2>Current Energy Usage</h2>
           <h1>2.1kw</h1>
