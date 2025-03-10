@@ -35,6 +35,7 @@ const SignUpForm = ({ onClose, onSignUpSuccess }) => {
 
       if (response.ok) {
         console.log('Signed up successfully');
+        alert('Signed up successfully');
 
         // Calling the onSignUpSuccess function as a prop
         onSignUpSuccess();
@@ -47,6 +48,7 @@ const SignUpForm = ({ onClose, onSignUpSuccess }) => {
 
       } else {
         console.log('Error signing up:', data.message);
+        alert('Error signing up. Please try again.');
       }
     } catch (error) {
       console.error('Error signing up:', error);
