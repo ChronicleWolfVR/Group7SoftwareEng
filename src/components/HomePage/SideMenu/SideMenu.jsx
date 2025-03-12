@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./SideMenu.css";
 import Modal from "../Thermostat/Modal/Modal";
 import User from "../Users/User"; // Import the User component
@@ -8,6 +9,7 @@ import Help from "../Help/Help"; // Import the Help component
 
 // SideMenu component definition
 const SideMenu = ({ isOpen, toggleMenu }) => {
+  const navigate = useNavigate(); // Hook for navigation
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
@@ -17,6 +19,12 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
     { name: "Jane Smith", email: "jane.smith@example.com" },
     { name: "Alice Johnson", email: "alice.johnson@example.com" },
   ]);
+
+  const handleLogout = () => {
+    // Clear any user-related state or context here if needed
+    alert('Logged out successfully');
+    navigate('/login'); // Navigate to the login page
+  };
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -62,6 +70,7 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
           <li onClick={handleOpenModal}>Users</li>
           <li onClick={handleShareModalOpen}>Share</li>
           <li onClick={handleHelpModalOpen}>Help</li>
+          <li onClick={handleLogout}>Logout</li> {/* Logout button */}
         </ul>
       </div>
       {/* Modal to display users, share section, or help section */}
