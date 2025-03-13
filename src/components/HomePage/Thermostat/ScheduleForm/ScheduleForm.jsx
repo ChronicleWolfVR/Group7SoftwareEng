@@ -19,10 +19,24 @@ const ScheduleForm = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/api/thermostat/schedule", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(schedule),
+      });
+
+      if (!response.ok) throw new Error("Failed to set the schedule");
+
+      const data = await response.json();
+      console.log("Schedule set successfully:", data);
+      } catch (error) {
+        console.error("Error setting the schedule:", error);
+    }
     // Handle form submission logic here
-    console.log("Schedule submitted:", schedule);
+    //console.log("Schedule submitted:", schedule);
   };
 
   return (
@@ -67,7 +81,7 @@ const ScheduleForm = () => {
         <input
           type="number"
           name="temperature"
-          value={schedule.temperature}
+          value={schedule.temp}
           onChange={handleChange}
         />
       </div>

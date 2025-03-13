@@ -10,10 +10,41 @@ const Thermostat = () => {
   const [isChanging, setIsChanging] = useState(false); // State to track if the temperature is being changed
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the visibility of the modal
 
+  useEffect(() => {
+    const fetchTemperature = async () => {
+      try{
+        const response = await fetch("http://localhost:3000/api/thermostat");
+        if(!response.ok) throw new Error("Failed to fetch the thermostat");
+        const data = await response.json();
+        setTemperature(data.currentTemp);
+        } catch (error) {
+          console.error("Error fetching thermostat:", error);
+        }
+      };
+
+      fetchTemperature();
+    }, []);
+
+
+
+
   // Function to handle temperature change
-  const handleTemperatureChange = (value) => {
+  const handleTemperatureChange = async (value) => {
     setTemperature(value);
     setIsChanging(true);
+
+    try{
+      const response = await fetch("http://localhost:3000/api/thermostat/temp", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentTemp: value }),
+      });
+
+      if(!response.ok) throw new Error("Failed to update the temperature");
+    } catch (error) {
+      console.error("Error updating the temperature:", error);
+      
+    }
   };
 
   // Function to handle temperature submission
