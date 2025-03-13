@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SmartPlugs.css";
 import Modal from "../Thermostat/Modal/Modal";
+//import { preview } from "vite";
 
 const SmartPlugs = () => {
   // State to manage the list of devices
   const [devices, setDevices] = useState([
-    { name: "Air Conditioner", wattage: 100 },
-    { name: "Coffee Machine", wattage: 100 },
-    { name: "Washing Machine", wattage: 100 },
-    { name: "Air Purifier", wattage: 100 },
-    { name: "Dryer", wattage: 100 },
-    { name: "Microwave", wattage: 100 },
+    // { name: "Air Conditioner", wattage: 100 },
+    // { name: "Coffee Machine", wattage: 100 },
+    // { name: "Washing Machine", wattage: 100 },
+    // { name: "Air Purifier", wattage: 100 },
+    // { name: "Dryer", wattage: 100 },
+    // { name: "Microwave", wattage: 100 },
   ]);
 
   // State to manage the name of the new device being added
@@ -19,14 +20,83 @@ const SmartPlugs = () => {
   // State to manage the visibility of the modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  useEffect(() => {
+    const fetchDevices = async () => {
+      try{
+        const response = await fetch("http://localhost:3000/api/smartplugs");
+        if (!response.ok) throw new Error("Failed to fetch devices");
+        const data = await response.json();
+        setDevices(data);
+        } catch (error) {
+          console.error("Error fetching devices:", error);
+        }
+      };
+
+        fetchDevices();
+  }, []);
+
+  const addDevice = async () => {
+    if (!newDeviceName.trim()) return;
+
+    const newDevice = {
+      name: newDeviceName,
+      status: false,
+      energy: 100,
+    };
+
+    try {
+      const response = await fetch("http://localhost:3000/api/smartplugs", 
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newDevice),
+        });
+
+        if (!response.ok) throw new Error("Failed to add device");
+
+        const addedDevice = await response.json();
+        setDevices((prevDevices) => [...prevDevices, addedDevice]);
+        setNewDeviceName("");
+        setIsModalOpen(false);
+        } catch (error) {
+          console.error("Error adding device:", error);
+        }
+      };
+
+  const toggleDevice = async (id) => {
+    try {
+      const deviceToToggle = devices.find((device) => device._id === id);
+      const newStatus = !deviceToToggle.status;
+
+      const response = await fetch(`http://localhost:3000/api/smartplugs/${id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStatus }),
+        });
+
+        if (!response.ok) throw new Error("Failed to toggle device");
+
+        //const updatedDevice = await response.json();
+        setDevices((prevDevices) => prevDevices.map((device) => (device._id === id ? { ...device, status: newStatus } : device
+          )
+        ))
+      } catch (error) {
+         console.error("Error toggling device:", error);
+  }
+};
+
+
+
+
   // Function to add a new device to the list
-  const addDevice = () => {
-    if (newDeviceName.trim() === "") return; // Prevent adding empty device names
-    const newDevice = { name: newDeviceName, wattage: 100 }; // Default wattage
-    setDevices([...devices, newDevice]); // Update the devices state
-    setNewDeviceName(""); // Reset the input field
-    setIsModalOpen(false); // Close the modal after adding a new device
-  };
+  // const addDevice = () => {
+  //   if (newDeviceName.trim() === "") return; // Prevent adding empty device names
+  //   const newDevice = { name: newDeviceName, wattage: 100 }; // Default wattage
+  //   setDevices([...devices, newDevice]); // Update the devices state
+  //   setNewDeviceName(""); // Reset the input field
+  //   setIsModalOpen(false); // Close the modal after adding a new device
+  // };
 
   // Function to open the modal
   const handleOpenModal = () => {
@@ -49,10 +119,12 @@ const SmartPlugs = () => {
           <div className="plugs-container">
             {/* Render each device as a plug card */}
             {devices.map((device, index) => (
-              <div key={index} className="plugcard">
+              <div key={device._id} className="plugcard">
                 <h3>{device.name}</h3>
                 <label className="switch">
-                  <input type="checkbox" />
+                  <input type="checkbox"
+                  checked={device.status}
+                  onChange={() => toggleDevice(device._id)} />
                   <span className="slider round"></span>
                 </label>
               </div>
@@ -65,9 +137,9 @@ const SmartPlugs = () => {
             <div className="scrollable-menu">
               {/* Render each device's power consumption */}
               {devices.map((device, index) => (
-                <div key={index} className="device-item">
+                <div key={device._id} className="device-item">
                   <span className="device-name">{device.name}</span>
-                  <span className="power-consumption">{device.wattage}W</span>
+                  <span className="power-consumption">{device.energy}W</span>
                 </div>
               ))}
             </div>
@@ -90,5 +162,4 @@ const SmartPlugs = () => {
     </>
   );
 };
-
 export default SmartPlugs;
