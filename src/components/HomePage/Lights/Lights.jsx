@@ -73,7 +73,7 @@ const Lights = () => {
   
       if (!response.ok) throw new Error("Failed to update light status");
   
-      const updatedLight = await response.json();
+      //const updatedLight = await response.json();
   
       setLights((prevLights) =>
         prevLights.map((light) =>
