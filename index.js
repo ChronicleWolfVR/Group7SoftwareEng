@@ -7,6 +7,7 @@ const cors = require('cors'); //handling cross origin requests
 const lightsRouter = require('./routes/lights');
 const usersRouter = require('./routes/users'); //importing user routes
 const robotsRouter = require('./routes/robots');
+const smartPlugsRouter = require('./routes/smartplugs');
 //const Lights = require('./models/Lights');
 
 
@@ -63,6 +64,7 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/api/lights', lightsRouter);
 app.use('/api/users', usersRouter); //using user routes for api requests
 app.use('/api/robots', robotsRouter);
+app.use('/api/smartplugs', smartPlugsRouter);
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
