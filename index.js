@@ -8,6 +8,7 @@ const lightsRouter = require('./routes/lights');
 const usersRouter = require('./routes/users'); //importing user routes
 const robotsRouter = require('./routes/robots');
 const smartPlugsRouter = require('./routes/smartplugs');
+const thermostatRouter = require('./routes/thermostat');
 //const Lights = require('./models/Lights');
 
 
@@ -65,6 +66,7 @@ app.use('/api/lights', lightsRouter);
 app.use('/api/users', usersRouter); //using user routes for api requests
 app.use('/api/robots', robotsRouter);
 app.use('/api/smartplugs', smartPlugsRouter);
+app.use('/api/thermostat', thermostatRouter);
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
