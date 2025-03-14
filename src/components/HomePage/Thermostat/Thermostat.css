@@ -54,3 +54,8 @@
   flex-direction: column; /* Arrange children in a column */
   align-items: center; /* Center align children */
 }
+
+.confirmation-message {
+  color: green;
+  margin-top: 1%;
+}

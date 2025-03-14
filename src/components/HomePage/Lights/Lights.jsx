@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "rc-slider";
 import "./Lights.css";
 import Modal from "../Thermostat/Modal/Modal";
@@ -8,14 +8,7 @@ import dim from "./half-full.png";
 
 const Lights = () => {
   // State to manage the list of lights
-  const [lights, setLights] = useState([
-    // { id: 1, name: "Master Bedroom", isOn: false },
-    // { id: 2, name: "Bedroom 1", isOn: false },
-    // { id: 3, name: "Guest Room", isOn: false },
-    // { id: 4, name: "Dining Room", isOn: false },
-    // { id: 5, name: "Living Room", isOn: false },
-    // { id: 6, name: "Kitchen", isOn: false },
-  ]);
+  const [lights, setLights] = useState([]);
 
   // State to manage the name of a new light
   const [newLightName, setNewLightName] = useState("");
@@ -23,13 +16,23 @@ const Lights = () => {
   // State to manage the visibility of the modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // State to manage the brightness of the main light
+  const [mainLightBrightness, setMainLightBrightness] = useState(50);
 
+  // State to manage the brightness of the floor lamps
+  const [floorLampsBrightness, setFloorLampsBrightness] = useState(50);
+
+  // State to manage the confirmation messages for light presets
+  const [presetMessage, setPresetMessage] = useState("Manual Mode");
+
+  // State to manage the brightness messages
+  const [brightnessMessage, setBrightnessMessage] = useState("");
 
   useEffect(() => {
     const fetchLights = async () => {
-      try{
+      try {
         const response = await fetch("http://localhost:3000/api/lights");
-        if(!response.ok) throw new Error("Failed to fetch lights");
+        if (!response.ok) throw new Error("Failed to fetch lights");
 
         const data = await response.json();
         setLights(data);
@@ -41,40 +44,25 @@ const Lights = () => {
     fetchLights();
   }, []);
 
-  // const toggleLight = (id) => {
-  //   setLights((prevLights) =>
-  //     prevLights.map((light) => {
-  //       if (light.id === id) {
-  //         const newState = !light.isOn;
-  //         console.log(`${light.name} is now ${newState ? "ON" : "OFF"}`);
-  //         return { ...light, isOn: newState };
-  //       }
-  //       return light;
-  //     })
-  //   );
-  // };
-
   const toggleLight = async (id) => {
     try {
       console.log("Toggling light:", id); // Debugging
-      const lightToToggle = lights.find(light => light._id === id);
-      if(!lightToToggle){
+      const lightToToggle = lights.find((light) => light._id === id);
+      if (!lightToToggle) {
         console.error("Light not found");
         return;
       }
       const newStatus = !lightToToggle.status;
       console.log("New status:", newStatus);
-  
+
       const response = await fetch(`http://localhost:3000/api/lights/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
       });
-  
+
       if (!response.ok) throw new Error("Failed to update light status");
-  
-      //const updatedLight = await response.json();
-  
+
       setLights((prevLights) =>
         prevLights.map((light) =>
           light._id === id ? { ...light, status: newStatus } : light
@@ -85,25 +73,13 @@ const Lights = () => {
     }
   };
 
-  // const addLight = () => {
-  //   if (newLightName.trim() === "") return;
-  //   const newLight = {
-  //     id: lights.length + 1,
-  //     name: newLightName,
-  //     isOn: false,
-  //   };
-  //   setLights([...lights, newLight]);
-  //   setNewLightName("");
-  //   setIsModalOpen(false); // Close the modal after adding a new light
-  // };
-
   const addLight = async () => {
     if (!newLightName.trim()) return;
-    
+
     const newLight = {
       name: newLightName,
       status: false,
-      energy: 0
+      energy: 0,
     };
 
     try {
@@ -120,52 +96,39 @@ const Lights = () => {
         throw new Error("Failed to add light");
       }
 
-    const addedLight = await response.json();
-    console.log("Added light:", addedLight);
+      const addedLight = await response.json();
+      console.log("Added light:", addedLight);
 
-    setLights((prevLights) => [...prevLights, addedLight]);
-    setNewLightName("");
-    setIsModalOpen(false);
-  } catch(err) {
-    console.error("Error adding light:", err);
-  }
-};
+      setLights((prevLights) => [...prevLights, addedLight]);
+      setNewLightName("");
+      setIsModalOpen(false);
+    } catch (err) {
+      console.error("Error adding light:", err);
+    }
+  };
 
-
-  // Function to toggle the state of a light (on/off)
-//   const toggleLight = (id) => {
-//     setLights((prevLights) =>
-//       prevLights.map((light) => {
-//         if (light.id === id) {
-//           const newState = !light.isOn;
-//           console.log(`${light.name} is now ${newState ? "ON" : "OFF"}`);
-//           return { ...light, isOn: newState };
-//         }
-//         return light;
-//       })
-//     );
-//   };
-
-  // Function to add a new light to the list
-
-
-
-
-  // Function to open the modal
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
 
-  // Function to close the modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
-  // State to manage the brightness of the main light
-  const [mainLightBrightness, setMainLightBrightness] = useState(50);
+  const handlePresetClick = (preset) => {
+    setPresetMessage(`${preset} mode activated`);
 
-  // State to manage the brightness of the floor lamps
-  const [floorLampsBrightness, setFloorLampsBrightness] = useState(50);
+  };
+
+  const handleBrightnessChange = (type, value) => {
+    if (type === "main") {
+      setMainLightBrightness(value);
+      setBrightnessMessage(`Main Light brightness set to ${value}%`);
+    } else if (type === "floor") {
+      setFloorLampsBrightness(value);
+      setBrightnessMessage(`Floor Lamps brightness set to ${value}%`);
+    }
+  };
 
   return (
     <>
@@ -192,17 +155,21 @@ const Lights = () => {
         </div>
         <div className="lightcard">
           <div className="light-presets">
-            <button className="saver">
+            <button className="saver" onClick={() => handlePresetClick("Saver")}>
               <img src={leaf} alt="saver" />
               Saver
             </button>
-            <button className="dim">
+            <button className="dim" onClick={() => handlePresetClick("Dim")}>
               <img src={dim} alt="dim" /> Dim
             </button>
-            <button className="night">
-              <img src={night} alt="saver" />
+            <button className="night" onClick={() => handlePresetClick("Night")}>
+              <img src={night} alt="night" />
               Night
             </button>
+          </div>
+          <div className="message-container">
+            <p className="preset-message">{presetMessage}</p>
+
           </div>
           <div>
             <div className="light-sliders-container">
@@ -213,10 +180,7 @@ const Lights = () => {
                   min={0}
                   max={100}
                   value={mainLightBrightness}
-                  onChange={(value) => {
-                    setMainLightBrightness(value);
-                    console.log(`Main Light brightness: ${value}`);
-                  }}
+                  onChange={(value) => handleBrightnessChange("main", value)}
                 />
               </div>
               <div className="light-slider-item">
@@ -226,14 +190,13 @@ const Lights = () => {
                   min={0}
                   max={100}
                   value={floorLampsBrightness}
-                  onChange={(value) => {
-                    setFloorLampsBrightness(value);
-                    console.log(`Floor Lamps brightness: ${value}`);
-                  }}
+                  onChange={(value) => handleBrightnessChange("floor", value)}
                 />
               </div>
             </div>
+            
           </div>
+          <p className="brightness-message">{brightnessMessage}</p>
         </div>
       </div>
 
