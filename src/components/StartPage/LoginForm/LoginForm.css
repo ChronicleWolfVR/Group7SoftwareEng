@@ -30,3 +30,8 @@ form input {
   border-radius: 2rem; /* Rounded corners for inputs */
   border: 1px solid #ccc; /* Border around inputs */
 }
+
+.error-message {
+  color: red;
+  margin-top: 1%;
+}

@@ -3,22 +3,14 @@ import './LoginForm.css';
 
 // LoginForm component
 const LoginForm = ({ onClose, onLoginSuccess }) => {
-  // State variables for username and password
+  // State variables for username, password, and error message
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-
-    // Check if the username and password are correct
-    if (username === "admin" && password === "admin") {
-      console.log('Logged in successfully');
-      onLoginSuccess(); // Call the onLoginSuccess function
-    } else {
-      console.log('Invalid credentials');
-      alert('Invalid credentials. Please try again.');
-    }
 
     // Object with the user's login data
     const loginData = {
@@ -41,12 +33,14 @@ const LoginForm = ({ onClose, onLoginSuccess }) => {
       if (response.ok) {
         console.log('Logged in successfully');
         onLoginSuccess(); // Call the onLoginSuccess function
+        setErrorMessage(''); // Clear any previous error message
       } else {
         console.log('Invalid credentials', data.message);
-        alert('Invalid credentials. Please try again.');
+        setErrorMessage('Incorrect username or password'); // Set error message
       }
     } catch (error) {
       console.error('Error logging in:', error);
+      setErrorMessage('Error logging in. Please try again later.'); // Set error message
     }
   };
 
@@ -77,6 +71,7 @@ const LoginForm = ({ onClose, onLoginSuccess }) => {
             required
           />
         </div>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button type="submit">Login</button>
       </form>
     </div>
