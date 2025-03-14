@@ -225,8 +225,9 @@ input:checked + .slider:before {
 }
 
 /* Styling for the form inside the modal */
-form {
+.light-form {
   border: 2px solid #ccc;
+  padding: 20px;
   border-radius: 10px;
   width: 300px;
   margin: auto;
@@ -238,12 +239,12 @@ form {
 }
 
 /* Styling for the input inside the form */
-form .light-input {
+.light-form .light-input {
   width: 100%;
-  margin-bottom: 2%; /* Add some space between the input and the button */
+  margin-bottom: 20px; /* Add some space between the input and the button */
 }
 
 /* Styling for the button inside the form */
-form .add-light-button {
-  width: fit-content;
+.light-form .add-light-button {
+  width: 100%;
 }

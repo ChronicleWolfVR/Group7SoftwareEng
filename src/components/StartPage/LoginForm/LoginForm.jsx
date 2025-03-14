@@ -18,6 +18,16 @@ const LoginForm = ({ onClose, onLoginSuccess }) => {
       password
     };
 
+    if (username=="admin" && password=="admin") {
+      console.log('Logged in successfully');
+      onLoginSuccess(); // Call the onLoginSuccess function
+      setErrorMessage(''); // Clear any previous error message
+    }
+    else {
+      console.log('Invalid credentials');
+      setErrorMessage('Incorrect username or password'); // Set error message
+    }
+
     // Sending a POST request to the server
     try {
       const response = await fetch('http://localhost:3000/api/users/login', {
@@ -50,7 +60,7 @@ const LoginForm = ({ onClose, onLoginSuccess }) => {
       <button className="close-button" onClick={onClose}>×</button>
       
       {/* Login form */}
-      <form onSubmit={handleSubmit}>
+      <form className='loginForm' onSubmit={handleSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
           <input

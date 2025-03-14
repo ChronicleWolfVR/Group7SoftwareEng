@@ -144,7 +144,7 @@ const Robots = () => {
       </div>
       {/* Modal to add a new robot */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <form>
+        <form className="robot-form">
           <input
             className="robot-input"
             type="text"

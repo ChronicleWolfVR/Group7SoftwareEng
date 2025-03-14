@@ -193,7 +193,6 @@ input:checked + .slider:before {
     opacity: 1;
   }
   100% {
-
   }
 }
 
@@ -215,8 +214,10 @@ input:checked + .slider:before {
   margin-top: 20px; /* Increase margin at the top */
 }
 
+/* Add this to the existing Robots.css file */
+
 /* Styling for the form inside the modal */
-form {
+.robot-form {
   border: 2px solid #ccc;
   padding: 20px;
   border-radius: 10px;
@@ -230,12 +231,12 @@ form {
 }
 
 /* Styling for the input inside the form */
-form .robot-input {
+.robot-form .robot-input {
   width: 100%;
   margin-bottom: 20px; /* Add some space between the input and the button */
 }
 
 /* Styling for the button inside the form */
-form .add-robot-button {
+.robot-form .add-robot-button {
   width: 100%;
 }

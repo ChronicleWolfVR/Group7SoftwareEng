@@ -154,21 +154,26 @@ const Lights = () => {
         </div>
         <div className="lightcard">
           <div className="light-presets">
-            <button className="saver" onClick={() => handlePresetClick("Saver")}>
+            <button
+              className="saver"
+              onClick={() => handlePresetClick("Saver")}
+            >
               <img src={leaf} alt="saver" />
               Saver
             </button>
             <button className="dim" onClick={() => handlePresetClick("Dim")}>
               <img src={dim} alt="dim" /> Dim
             </button>
-            <button className="night" onClick={() => handlePresetClick("Night")}>
+            <button
+              className="night"
+              onClick={() => handlePresetClick("Night")}
+            >
               <img src={night} alt="night" />
               Night
             </button>
           </div>
           <div className="message-container">
             <p className="preset-message">{presetMessage}</p>
-
           </div>
           <div>
             <div className="light-sliders-container">
@@ -193,13 +198,13 @@ const Lights = () => {
                 />
               </div>
             </div>
-            <p className="brightness-message">{brightnessMessage}</p>
           </div>
+          <p className="brightness-message">{brightnessMessage}</p>
         </div>
       </div>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <form>
+        <form className="light-form">
           <input
             className="light-input"
             type="text"

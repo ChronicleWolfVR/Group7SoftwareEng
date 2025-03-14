@@ -130,7 +130,7 @@ const SmartPlugs = () => {
 
       {/* Modal for adding a new device */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <form>
+        <form className="smartplug-form">
           <input
             className="device-input"
             type="text"

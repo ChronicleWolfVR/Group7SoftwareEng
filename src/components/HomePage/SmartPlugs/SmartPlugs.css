@@ -218,7 +218,7 @@ input:checked + .slider:before {
 }
 
 /* Styling for the form inside the modal */
-form {
+.smartplug-form {
   border: 2px solid #ccc;
   padding: 20px;
   border-radius: 10px;
@@ -232,12 +232,12 @@ form {
 }
 
 /* Styling for the input inside the form */
-form .device-input {
+.smartplug-form .device-input {
   width: 100%;
   margin-bottom: 20px; /* Add some space between the input and the button */
 }
 
 /* Styling for the button inside the form */
-form .add-plug-button {
+.smartplug-form .add-plug-button {
   width: 100%;
 }
