@@ -103,10 +103,10 @@ main h2 {
     NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
     EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
     "Noto Sans", sans-serif; /* Sets the font family for the close button */
-  font-size: 16px; /* Sets the font size for the close button */
+  font-size: 100%; /* Sets the font size for the close button */
   font-weight: 700; /* Sets the font weight for the close button */
-  line-height: 24px; /* Sets the line height for the close button */
-  padding: 8px 18px; /* Adds padding to the close button */
+  line-height: 100%; /* Sets the line height for the close button */
+  padding: 1% 2%; /* Adds padding to the close button */
   user-select: none; /* Prevents text selection on the close button */
   touch-action: manipulation; /* Disables default touch actions */
   text-align: center; /* Centers text inside the close button */

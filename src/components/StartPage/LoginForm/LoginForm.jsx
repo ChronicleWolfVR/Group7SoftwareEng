@@ -17,6 +17,7 @@ const LoginForm = ({ onClose, onLoginSuccess }) => {
       onLoginSuccess(); // Call the onLoginSuccess function
     } else {
       console.log('Invalid credentials');
+      alert('Invalid credentials. Please try again.');
     }
 
     // Object with the user's login data
@@ -42,6 +43,7 @@ const LoginForm = ({ onClose, onLoginSuccess }) => {
         onLoginSuccess(); // Call the onLoginSuccess function
       } else {
         console.log('Invalid credentials', data.message);
+        alert('Invalid credentials. Please try again.');
       }
     } catch (error) {
       console.error('Error logging in:', error);
