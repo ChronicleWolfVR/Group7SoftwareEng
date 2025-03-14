@@ -168,7 +168,7 @@ const Lights = () => {
           </div>
           <div className="message-container">
             <p className="preset-message">{presetMessage}</p>
-            <p className="brightness-message">{brightnessMessage}</p>
+
           </div>
           <div>
             <div className="light-sliders-container">
@@ -193,6 +193,7 @@ const Lights = () => {
                 />
               </div>
             </div>
+            <p className="brightness-message">{brightnessMessage}</p>
           </div>
         </div>
       </div>
