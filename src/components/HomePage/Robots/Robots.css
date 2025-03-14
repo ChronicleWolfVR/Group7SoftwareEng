@@ -179,3 +179,63 @@ input:checked + .slider:before {
   display: block; /* Ensure the text does not align with the image */
   margin: 0 auto; /* Center the image horizontally */
 }
+
+/* Keyframes for fade-in and fade-out animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+
+  }
+}
+
+/* Apply the animation to the preset message */
+.preset-message {
+  margin-top: 20px;
+  background: linear-gradient(to top, #6a11cb, #1e1649);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: fadeInOut 2s ease-in-out;
+  visibility: visible; /* Initially visible */
+}
+
+.message-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Increase margin at the top */
+}
+
+/* Styling for the form inside the modal */
+form {
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  margin: auto;
+  background: linear-gradient(to top, #cfc7fc, #feeef1);
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the input and button */
+}
+
+/* Styling for the input inside the form */
+form .robot-input {
+  width: 100%;
+  margin-bottom: 20px; /* Add some space between the input and the button */
+}
+
+/* Styling for the button inside the form */
+form .add-robot-button {
+  width: 100%;
+}

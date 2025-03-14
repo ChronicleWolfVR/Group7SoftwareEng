@@ -18,23 +18,25 @@ const Robots = () => {
   // State to manage the modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  //fetching robots from the backend
+  // State to manage the confirmation message for presets
+  const [presetMessage, setPresetMessage] = useState("Charge mode");
+
+  // Fetching robots from the backend
   useEffect(() => {
     const fetchRobots = async () => {
-      try{
+      try {
         const response = await fetch("http://localhost:3000/api/robots");
 
         if (!response.ok) throw new Error("Failed to fetch robots");
         const data = await response.json();
         setRobots(data);
-      } catch (error){
+      } catch (error) {
         console.error("Error fetching robots:", error);
       }
     };
 
     fetchRobots();
-  } , []);
-
+  }, []);
 
   const addRobot = async () => {
     if (!newRobotName.trim()) return;
@@ -48,7 +50,7 @@ const Robots = () => {
     try {
       const response = await fetch("http://localhost:3000/api/robots", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newRobot),
       });
 
@@ -61,38 +63,30 @@ const Robots = () => {
     } catch (error) {
       console.error("Error adding robot:", error);
     }
-    };
+  };
 
   const toggleRobot = async (id) => {
-    try{
+    try {
       const robotToToggle = robots.find((robot) => robot._id === id);
       const newStatus = !robotToToggle.status;
 
-      const response = await fetch(`http://localhost:3000/api/robots/${id}`, 
-        {
+      const response = await fetch(`http://localhost:3000/api/robots/${id}`, {
         method: "PATCH",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({status: newStatus}),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
       });
 
       if (!response.ok) throw new Error("Failed to toggle robots status");
 
-      //const updatedRobot = await response.json();
-      setRobots((prevRobots) => prevRobots.map((robot) => robot._id === id ? {...robot, status: newStatus} : robot));
+      setRobots((prevRobots) =>
+        prevRobots.map((robot) =>
+          robot._id === id ? { ...robot, status: newStatus } : robot
+        )
+      );
     } catch (error) {
       console.error("Error toggling robot status:", error);
     }
   };
-
-
-  // Function to add a new robot to the list
-  // const addRobot = () => {
-  //   if (newRobotName.trim() === "") return;
-  //   const newRobot = { id: robots.length + 1, name: newRobotName, isOn: false };
-  //   setRobots([...robots, newRobot]);
-  //   setNewRobotName("");
-  //   setIsModalOpen(false);
-  // };
 
   // Function to open the modal
   const handleOpenModal = () => {
@@ -104,19 +98,10 @@ const Robots = () => {
     setIsModalOpen(false);
   };
 
-  // Function to toggle the state of a robot (on/off)
-  // const toggleRobot = (id) => {
-  //   setRobots((prevRobots) =>
-  //     prevRobots.map((robot) => {
-  //       if (robot.id === id) {
-  //         const newState = !robot.isOn;
-  //         console.log(`${robot.name} is now ${newState ? "ON" : "OFF"}`);
-  //         return { ...robot, isOn: newState };
-  //       }
-  //       return robot;
-  //     })
-  //   );
-  // };
+  // Function to handle preset button clicks
+  const handlePresetClick = (preset) => {
+    setPresetMessage(`${preset} mode activated`);
+  };
 
   return (
     <>
@@ -148,23 +133,29 @@ const Robots = () => {
           <img src={robotvaccum} alt="RoboVacuum" />
           <div className="presets-container">
             {/* Buttons for RoboVacuum actions */}
-            <button className="clean">Clean</button>
-            <button className="charge">Charge</button>
-            <button className="pause">Pause</button>
+            <button className="clean" onClick={() => handlePresetClick("Clean")}>Clean</button>
+            <button className="charge" onClick={() => handlePresetClick("Charge")}>Charge</button>
+            <button className="pause" onClick={() => handlePresetClick("Pause")}>Pause</button>
+          </div>
+          <div className="message-container">
+            <p className="preset-message">{presetMessage}</p>
           </div>
         </div>
       </div>
       {/* Modal to add a new robot */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <input
-          type="text"
-          value={newRobotName}
-          onChange={(e) => setNewRobotName(e.target.value)}
-          placeholder="Enter robot name"
-        />
-        <button className="add-robot-button" onClick={addRobot}>
-          Add Robot+
-        </button>
+        <form>
+          <input
+            className="robot-input"
+            type="text"
+            value={newRobotName}
+            onChange={(e) => setNewRobotName(e.target.value)}
+            placeholder="Enter robot name"
+          />
+          <button className="add-robot-button" onClick={addRobot}>
+            Add Robot+
+          </button>
+        </form>
       </Modal>
     </>
   );

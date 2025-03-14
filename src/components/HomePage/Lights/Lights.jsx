@@ -117,7 +117,6 @@ const Lights = () => {
 
   const handlePresetClick = (preset) => {
     setPresetMessage(`${preset} mode activated`);
-
   };
 
   const handleBrightnessChange = (type, value) => {
@@ -169,7 +168,7 @@ const Lights = () => {
           </div>
           <div className="message-container">
             <p className="preset-message">{presetMessage}</p>
-
+            <p className="brightness-message">{brightnessMessage}</p>
           </div>
           <div>
             <div className="light-sliders-container">
@@ -194,23 +193,23 @@ const Lights = () => {
                 />
               </div>
             </div>
-            
           </div>
-          <p className="brightness-message">{brightnessMessage}</p>
         </div>
       </div>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <input
-          className="light-input"
-          type="text"
-          value={newLightName}
-          onChange={(e) => setNewLightName(e.target.value)}
-          placeholder="Enter light name"
-        />
-        <button className="add-light-button" onClick={addLight}>
-          Add Light+
-        </button>
+        <form>
+          <input
+            className="light-input"
+            type="text"
+            value={newLightName}
+            onChange={(e) => setNewLightName(e.target.value)}
+            placeholder="Enter light name"
+          />
+          <button className="add-light-button" onClick={addLight}>
+            Add Light+
+          </button>
+        </form>
       </Modal>
     </>
   );
