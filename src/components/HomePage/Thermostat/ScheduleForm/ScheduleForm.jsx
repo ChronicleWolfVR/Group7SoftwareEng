@@ -32,6 +32,7 @@ const ScheduleForm = () => {
 
       const data = await response.json();
       console.log("Schedule set successfully:", data);
+      alert("Schedule set successfully!");
       } catch (error) {
         console.error("Error setting the schedule:", error);
     }

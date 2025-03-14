@@ -5,6 +5,7 @@ import "./AddUserForm.css";
 const AddUserForm = ({ onClose, onAddUser }) => {
   const [name, setName] = useState(""); // State variable for name
   const [email, setEmail] = useState(""); // State variable for email
+  const [password, setPassword] = useState(""); // State variable for password
 
   // Handle form submission
   const handleSubmit = (e) => {
@@ -14,6 +15,7 @@ const AddUserForm = ({ onClose, onAddUser }) => {
     const newUser = {
       name,
       email,
+      password,
     };
 
     // Call the onAddUser callback with the new user data
@@ -44,6 +46,16 @@ const AddUserForm = ({ onClose, onAddUser }) => {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
