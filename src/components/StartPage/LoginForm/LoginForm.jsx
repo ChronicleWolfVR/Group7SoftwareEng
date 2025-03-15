@@ -22,8 +22,8 @@ const LoginForm = ({ onClose, onLoginSuccess }) => {
       console.log('Logged in successfully');
       onLoginSuccess(); // Call the onLoginSuccess function
       setErrorMessage(''); // Clear any previous error message
-    }
-    else {
+      return;
+    } else {
       console.log('Invalid credentials');
       setErrorMessage('Incorrect username or password'); // Set error message
     }
