@@ -2,13 +2,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap");
 
 /* Styling for the form element */
+
+.formContainer {
+  position: relative;
+  border-radius: 8px;
+}
+
+/* Styles for the menu close button */
+.closeButton {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  left: 65%;
+  padding: 0%;
+  margin: 0%;
+  position: absolute;
+  height: fit-content;
+  width: fit-content;
+}
+
 form {
   border: 2px solid #ccc; /* Light grey border */
   padding: 20px; /* Padding inside the form */
   border-radius: 10px; /* Rounded corners */
   width: 300px; /* Fixed width */
   margin: auto; /* Center the form horizontally */
-  background: linear-gradient(to top, #cfc7fc, #feeef1); /* Gradient background */
+  background: linear-gradient(
+    to top,
+    #cfc7fc,
+    #feeef1
+  ); /* Gradient background */
   color: black; /* Text color */
 }
 

@@ -55,9 +55,9 @@ const LoginForm = ({ onClose, onLoginSuccess }) => {
   };
 
   return (
-    <div className="form-container">
+    <div className="formContainer">
       {/* Close button */}
-      <button className="close-button" onClick={onClose}>×</button>
+      <button className="closeButton1" onClick={onClose}>×</button>
       
       {/* Login form */}
       <form className='loginForm' onSubmit={handleSubmit}>

@@ -28,7 +28,7 @@ const AddUserForm = ({ onClose, onAddUser }) => {
   return (
     <div className="form-container">
       {/* Add user form */}
-      <form onSubmit={handleSubmit}>
+      <form className="add-user-form" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>
           <input
