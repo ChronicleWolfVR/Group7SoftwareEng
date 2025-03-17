@@ -12,6 +12,9 @@ const SmartPlugs = () => {
   // State to manage the visibility of the modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // State to manage the visibility of delete buttons
+  const [showDeleteButtons, setShowDeleteButtons] = useState(false);
+
   useEffect(() => {
     const fetchDevices = async () => {
       try {
@@ -100,6 +103,12 @@ const SmartPlugs = () => {
           <button className="add-plug-button" onClick={handleOpenModal}>
             Add Plug+
           </button>
+          <button
+            className="toggle-delete-button"
+            onClick={() => setShowDeleteButtons(!showDeleteButtons)}
+          >
+            {showDeleteButtons ? "Hide Delete Buttons" : "Show Delete Buttons"}
+          </button>
           <div className="plugs-container">
             {/* Render each device as a plug card */}
             {devices.map((device) => (
@@ -113,7 +122,9 @@ const SmartPlugs = () => {
                   />
                   <span className="slider round"></span>
                 </label>
-                <button className="delete-plug-button">Delete</button>
+                {showDeleteButtons && (
+                  <button className="delete-plug-button">Delete</button>
+                )}
               </div>
             ))}
           </div>

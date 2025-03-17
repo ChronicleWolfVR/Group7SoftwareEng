@@ -28,6 +28,9 @@ const Lights = () => {
   // State to manage the brightness messages
   const [brightnessMessage, setBrightnessMessage] = useState("");
 
+  // State to manage the visibility of delete buttons
+  const [showDeleteButtons, setShowDeleteButtons] = useState(false);
+
   useEffect(() => {
     const fetchLights = async () => {
       try {
@@ -138,6 +141,12 @@ const Lights = () => {
           <button className="add-light-button" onClick={handleOpenModal}>
             Add Light+
           </button>
+          <button
+            className="toggle-delete-button"
+            onClick={() => setShowDeleteButtons(!showDeleteButtons)}
+          >
+            {showDeleteButtons ? "Hide Delete Buttons" : "Show Delete Buttons"}
+          </button>
           <div className="lights-container">
             {lights.map((light) => (
               <div className="light-bulb-card" key={light._id}>
@@ -150,20 +159,29 @@ const Lights = () => {
                   />
                   <span className="slider round"></span>
                 </label>
+                {showDeleteButtons && (
+                  <button className="delete-light-button">Delete</button>
+                )}
               </div>
             ))}
           </div>
         </div>
         <div className="lightcard">
           <div className="light-presets">
-            <button className="saver" onClick={() => handlePresetClick("Saver")}>
+            <button
+              className="saver"
+              onClick={() => handlePresetClick("Saver")}
+            >
               <img src={leaf} alt="saver" />
               Saver
             </button>
             <button className="dim" onClick={() => handlePresetClick("Dim")}>
               <img src={dim} alt="dim" /> Dim
             </button>
-            <button className="night" onClick={() => handlePresetClick("Night")}>
+            <button
+              className="night"
+              onClick={() => handlePresetClick("Night")}
+            >
               <img src={night} alt="night" />
               Night
             </button>

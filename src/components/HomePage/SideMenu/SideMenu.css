@@ -115,11 +115,7 @@
 }
 
 .user-modal {
-  background: linear-gradient(
-    to top,
-    #cfc7fc,
-    #feeef1
-  );
+  background: linear-gradient(to top, #cfc7fc, #feeef1);
 }
 
 .user-modal {
@@ -136,11 +132,23 @@
   overflow-y: auto;
 }
 
-.add-user{
+.add-user {
   margin-top: 10%;
 }
 
-.delete-user{
+.delete-user {
   margin-top: 5%;
   color: red;
+  margin-right: 10px; /* Add spacing between buttons */
+}
+
+/* Add margin to the edit and delete profile buttons */
+.edit-profile-button,
+.delete-user {
+  margin-bottom: 1%; /* Add spacing between buttons */
+}
+
+/* Add margin to the save and cancel buttons on the edit profile form */
+.edit-profile-form button {
+  margin-bottom: 1%; /* Add spacing between buttons */
 }

@@ -241,6 +241,10 @@ input:checked + .slider:before {
   width: 100%;
 }
 
-.delete-robot-button{
+.delete-robot-button {
   width: 100%;
+}
+
+.toggle-delete-button {
+  margin: 0%;
 }

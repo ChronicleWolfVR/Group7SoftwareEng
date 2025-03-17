@@ -16,6 +16,9 @@ const Robots = () => {
   // State to manage the confirmation message for presets
   const [presetMessage, setPresetMessage] = useState("Charge mode");
 
+  // State to manage the visibility of delete buttons
+  const [showDeleteButtons, setShowDeleteButtons] = useState(false);
+
   // Fetching robots from the backend
   useEffect(() => {
     const fetchRobots = async () => {
@@ -108,6 +111,12 @@ const Robots = () => {
           <button className="add-robot-button" onClick={handleOpenModal}>
             Add Robot+
           </button>
+          <button
+            className="toggle-delete-button"
+            onClick={() => setShowDeleteButtons(!showDeleteButtons)}
+          >
+            {showDeleteButtons ? "Hide Delete Buttons" : "Show Delete Buttons"}
+          </button>
           <div className="robots-container">
             {/* Render the list of robots */}
             {robots.map((robot) => (
@@ -121,7 +130,9 @@ const Robots = () => {
                   />
                   <span className="slider round"></span>
                 </label>
-                <button className="delete-robot-button">Delete</button>
+                {showDeleteButtons && (
+                  <button className="delete-robot-button">Delete</button>
+                )}
               </div>
             ))}
           </div>
