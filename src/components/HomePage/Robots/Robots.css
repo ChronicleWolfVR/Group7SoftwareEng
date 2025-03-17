@@ -240,3 +240,7 @@ input:checked + .slider:before {
 .robot-form .add-robot-button {
   width: 100%;
 }
+
+.delete-robot-button{
+  width: 100%;
+}

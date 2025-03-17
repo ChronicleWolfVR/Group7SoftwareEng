@@ -181,7 +181,7 @@ input:checked + .slider:before {
   justify-content: space-between;
   gap: 10%;
   width: 100%;
-  margin-bottom: auto;
+  margin-bottom: 1%;
   position: relative;
 }
 
@@ -246,5 +246,9 @@ input:checked + .slider:before {
 
 /* Styling for the button inside the form */
 .light-form .add-light-button {
+  width: 100%;
+}
+
+.delete-light-button{
   width: 100%;
 }

@@ -148,6 +148,7 @@ const Lights = () => {
                   />
                   <span className="slider round"></span>
                 </label>
+                <button className="delete-light-button">Delete</button>
               </div>
             ))}
           </div>

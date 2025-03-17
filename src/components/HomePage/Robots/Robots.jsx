@@ -124,6 +124,7 @@ const Robots = () => {
                   />
                   <span className="slider round"></span>
                 </label>
+                <button className="delete-robot-button">Delete</button>
               </div>
             ))}
           </div>

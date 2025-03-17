@@ -108,6 +108,7 @@ const SmartPlugs = () => {
                   />
                   <span className="slider round"></span>
                 </label>
+                <button className="delete-plug-button">Delete</button>
               </div>
             ))}
           </div>

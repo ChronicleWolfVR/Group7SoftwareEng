@@ -151,7 +151,7 @@ input:checked + .slider:before {
   justify-content: space-between;
   gap: 10%;
   width: 100%;
-  margin-bottom: auto;
+  margin-bottom: 1%;
 }
 
 /* Styling for individual light presets */
@@ -237,7 +237,7 @@ input:checked + .slider:before {
   margin-bottom: 20px; /* Add some space between the input and the button */
 }
 
-/* Styling for the button inside the form */
-.smartplug-form .add-plug-button {
+.delete-plug-button{
   width: 100%;
 }
+
