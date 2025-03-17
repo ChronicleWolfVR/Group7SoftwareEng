@@ -5,12 +5,7 @@ import Modal from "../Thermostat/Modal/Modal";
 
 const Robots = () => {
   // State to manage the list of robots
-  const [robots, setRobots] = useState([
-    { id: 1, name: "TV", isOn: false },
-    { id: 2, name: "Sprinkler", isOn: false },
-    { id: 3, name: "RoboVacuum", isOn: false },
-    { id: 4, name: "RoboCutter", isOn: false },
-  ]);
+  const [robots, setRobots] = useState([]);
 
   // State to manage the new robot name input
   const [newRobotName, setNewRobotName] = useState("");
@@ -38,7 +33,9 @@ const Robots = () => {
     fetchRobots();
   }, []);
 
-  const addRobot = async () => {
+  const addRobot = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
     if (!newRobotName.trim()) return;
 
     const newRobot = {
@@ -145,7 +142,7 @@ const Robots = () => {
       </div>
       {/* Modal to add a new robot */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <form className="robot-form">
+        <form className="robot-form" onSubmit={addRobot}>
           <input
             className="robot-input"
             type="text"
@@ -153,7 +150,7 @@ const Robots = () => {
             onChange={(e) => setNewRobotName(e.target.value)}
             placeholder="Enter robot name"
           />
-          <button className="add-robot-button" onClick={addRobot}>
+          <button className="add-robot-button" type="submit">
             Add Robot+
           </button>
         </form>

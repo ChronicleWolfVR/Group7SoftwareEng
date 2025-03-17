@@ -27,7 +27,9 @@ const SmartPlugs = () => {
     fetchDevices();
   }, []);
 
-  const addDevice = async () => {
+  const addDevice = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
     if (!newDeviceName.trim()) return;
 
     const newDevice = {
@@ -131,7 +133,7 @@ const SmartPlugs = () => {
 
       {/* Modal for adding a new device */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <form className="smartplug-form">
+        <form className="smartplug-form" onSubmit={addDevice}>
           <input
             className="device-input"
             type="text"
@@ -139,7 +141,7 @@ const SmartPlugs = () => {
             onChange={(e) => setNewDeviceName(e.target.value)}
             placeholder="Enter device name"
           />
-          <button className="add-plug-button" onClick={addDevice}>
+          <button className="add-plug-button" type="submit">
             Add Plug+
           </button>
         </form>

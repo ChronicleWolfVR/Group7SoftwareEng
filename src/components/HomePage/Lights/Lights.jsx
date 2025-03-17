@@ -73,7 +73,9 @@ const Lights = () => {
     }
   };
 
-  const addLight = async () => {
+  const addLight = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
     if (!newLightName.trim()) return;
 
     const newLight = {
@@ -148,27 +150,20 @@ const Lights = () => {
                   />
                   <span className="slider round"></span>
                 </label>
-                <button className="delete-light-button">Delete</button>
               </div>
             ))}
           </div>
         </div>
         <div className="lightcard">
           <div className="light-presets">
-            <button
-              className="saver"
-              onClick={() => handlePresetClick("Saver")}
-            >
+            <button className="saver" onClick={() => handlePresetClick("Saver")}>
               <img src={leaf} alt="saver" />
               Saver
             </button>
             <button className="dim" onClick={() => handlePresetClick("Dim")}>
               <img src={dim} alt="dim" /> Dim
             </button>
-            <button
-              className="night"
-              onClick={() => handlePresetClick("Night")}
-            >
+            <button className="night" onClick={() => handlePresetClick("Night")}>
               <img src={night} alt="night" />
               Night
             </button>
@@ -205,7 +200,7 @@ const Lights = () => {
       </div>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <form className="light-form">
+        <form className="light-form" onSubmit={addLight}>
           <input
             className="light-input"
             type="text"
@@ -213,7 +208,7 @@ const Lights = () => {
             onChange={(e) => setNewLightName(e.target.value)}
             placeholder="Enter light name"
           />
-          <button className="add-light-button" onClick={addLight}>
+          <button className="add-light-button" type="submit">
             Add Light+
           </button>
         </form>
