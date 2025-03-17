@@ -131,9 +131,24 @@ const Robots = () => {
           <img src={robotvaccum} alt="RoboVacuum" />
           <div className="presets-container">
             {/* Buttons for RoboVacuum actions */}
-            <button className="clean" onClick={() => handlePresetClick("Clean")}>Clean</button>
-            <button className="charge" onClick={() => handlePresetClick("Charge")}>Charge</button>
-            <button className="pause" onClick={() => handlePresetClick("Pause")}>Pause</button>
+            <button
+              className="clean"
+              onClick={() => handlePresetClick("Clean")}
+            >
+              Clean
+            </button>
+            <button
+              className="charge"
+              onClick={() => handlePresetClick("Charge")}
+            >
+              Charge
+            </button>
+            <button
+              className="pause"
+              onClick={() => handlePresetClick("Pause")}
+            >
+              Pause
+            </button>
           </div>
           <div className="message-container">
             <p className="preset-message">{presetMessage}</p>
@@ -151,7 +166,7 @@ const Robots = () => {
             placeholder="Enter robot name"
           />
           <button className="add-robot-button" type="submit">
-            Add Robot+
+            Sync and Add Robot+
           </button>
         </form>
       </Modal>

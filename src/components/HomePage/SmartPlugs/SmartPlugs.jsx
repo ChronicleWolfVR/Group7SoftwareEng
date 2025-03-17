@@ -61,11 +61,14 @@ const SmartPlugs = () => {
       const deviceToToggle = devices.find((device) => device._id === id);
       const newStatus = !deviceToToggle.status;
 
-      const response = await fetch(`http://localhost:3000/api/smartplugs/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: newStatus }),
-      });
+      const response = await fetch(
+        `http://localhost:3000/api/smartplugs/${id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: newStatus }),
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to toggle device");
 
@@ -142,7 +145,7 @@ const SmartPlugs = () => {
             placeholder="Enter device name"
           />
           <button className="add-plug-button" type="submit">
-            Add Plug+
+            Sync and Add Plug+
           </button>
         </form>
       </Modal>

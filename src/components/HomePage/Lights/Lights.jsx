@@ -209,7 +209,7 @@ const Lights = () => {
             placeholder="Enter light name"
           />
           <button className="add-light-button" type="submit">
-            Add Light+
+            Sync and Add Light+
           </button>
         </form>
       </Modal>
