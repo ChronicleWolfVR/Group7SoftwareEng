@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./SmartPlugs.css";
 import Modal from "../Thermostat/Modal/Modal";
 
-const SmartPlugs = () => {
+const SmartPlugs = ({ isManager }) => {
   // State to manage the list of devices
   const [devices, setDevices] = useState([]);
 
@@ -103,12 +103,6 @@ const SmartPlugs = () => {
           <button className="add-plug-button" onClick={handleOpenModal}>
             Add Plug+
           </button>
-          <button
-            className="toggle-delete-button"
-            onClick={() => setShowDeleteButtons(!showDeleteButtons)}
-          >
-            {showDeleteButtons ? "Hide Delete Buttons" : "Show Delete Buttons"}
-          </button>
           <div className="plugs-container">
             {/* Render each device as a plug card */}
             {devices.map((device) => (
@@ -122,7 +116,7 @@ const SmartPlugs = () => {
                   />
                   <span className="slider round"></span>
                 </label>
-                {showDeleteButtons && (
+                {isManager && (
                   <button className="delete-plug-button">Delete</button>
                 )}
               </div>

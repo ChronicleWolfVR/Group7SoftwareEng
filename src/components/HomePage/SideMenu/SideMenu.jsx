@@ -9,7 +9,7 @@ import Share from "../Share/Share"; // Import the Share component
 import Help from "../Help/Help"; // Import the Help component
 
 // SideMenu component definition
-const SideMenu = ({ isOpen, toggleMenu }) => {
+const SideMenu = ({ isOpen, toggleMenu, onManagerToggle }) => {
   const navigate = useNavigate(); // Hook for navigation
   const { username } = useContext(UserContext); // Access the username
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -80,6 +80,11 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
 
+  const handleManagerToggle = () => {
+    setIsManager(!isManager);
+    onManagerToggle(!isManager); // Notify parent components about the manager toggle
+  };
+
   return (
     <>
       {/* Apply 'open' class if isOpen is true */}
@@ -100,7 +105,7 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
           <li onClick={handleLogout}>Logout</li> {/* Logout button */}
         </ul>
         {/* Toggle button for manager/normal user */}
-        <button onClick={() => setIsManager(!isManager)}>
+        <button onClick={handleManagerToggle}>
           {isManager ? "Switch to User" : "Switch to Manager"}
         </button>
       </div>

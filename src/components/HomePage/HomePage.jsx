@@ -14,6 +14,8 @@ const HomePage = () => {
   const [selectedTab, setSelectedTab] = useState("Overview");
   // State to manage the side menu open/close status
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // State to track manager mode
+  const [isManager, setIsManager] = useState(false);
 
   // List of tabs available
   const tabs = ["Overview", "Thermostat", "Lights", "Smart Plugs", "Robots"];
@@ -30,7 +32,11 @@ const HomePage = () => {
         <button className="menu-button" onClick={toggleMenu}>
           ☰
         </button>
-        <SideMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        <SideMenu
+          isOpen={isMenuOpen}
+          toggleMenu={toggleMenu}
+          onManagerToggle={setIsManager}
+        />
 
         {/* Title of the page */}
         <Title id="titlep2">Smart Home</Title>
@@ -57,7 +63,7 @@ const HomePage = () => {
           )}
           {selectedTab === "Lights" && (
             <div>
-              <Lights />
+              <Lights isManager={isManager} />
             </div>
           )}
           {selectedTab === "Thermostat" && (
@@ -67,12 +73,12 @@ const HomePage = () => {
           )}
           {selectedTab === "Smart Plugs" && (
             <div>
-              <SmartPlugs />
+              <SmartPlugs isManager={isManager} />
             </div>
           )}
           {selectedTab === "Robots" && (
             <div>
-              <Robots />
+              <Robots isManager={isManager} />
             </div>
           )}
         </div>

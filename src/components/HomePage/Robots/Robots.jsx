@@ -3,7 +3,7 @@ import "./Robots.css";
 import robotvaccum from "./robot-vacuum-cleaner.png";
 import Modal from "../Thermostat/Modal/Modal";
 
-const Robots = () => {
+const Robots = ({ isManager }) => {
   // State to manage the list of robots
   const [robots, setRobots] = useState([]);
 
@@ -111,12 +111,6 @@ const Robots = () => {
           <button className="add-robot-button" onClick={handleOpenModal}>
             Add Robot+
           </button>
-          <button
-            className="toggle-delete-button"
-            onClick={() => setShowDeleteButtons(!showDeleteButtons)}
-          >
-            {showDeleteButtons ? "Hide Delete Buttons" : "Show Delete Buttons"}
-          </button>
           <div className="robots-container">
             {/* Render the list of robots */}
             {robots.map((robot) => (
@@ -130,7 +124,7 @@ const Robots = () => {
                   />
                   <span className="slider round"></span>
                 </label>
-                {showDeleteButtons && (
+                {isManager && (
                   <button className="delete-robot-button">Delete</button>
                 )}
               </div>

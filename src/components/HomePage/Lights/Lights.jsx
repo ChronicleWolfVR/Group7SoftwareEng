@@ -6,7 +6,7 @@ import leaf from "./leaf-1531.svg";
 import night from "./night.png";
 import dim from "./half-full.png";
 
-const Lights = () => {
+const Lights = ({ isManager }) => {
   // State to manage the list of lights
   const [lights, setLights] = useState([]);
 
@@ -141,12 +141,6 @@ const Lights = () => {
           <button className="add-light-button" onClick={handleOpenModal}>
             Add Light+
           </button>
-          <button
-            className="toggle-delete-button"
-            onClick={() => setShowDeleteButtons(!showDeleteButtons)}
-          >
-            {showDeleteButtons ? "Hide Delete Buttons" : "Show Delete Buttons"}
-          </button>
           <div className="lights-container">
             {lights.map((light) => (
               <div className="light-bulb-card" key={light._id}>
@@ -159,7 +153,7 @@ const Lights = () => {
                   />
                   <span className="slider round"></span>
                 </label>
-                {showDeleteButtons && (
+                {isManager && (
                   <button className="delete-light-button">Delete</button>
                 )}
               </div>
