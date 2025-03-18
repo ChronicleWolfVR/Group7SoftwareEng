@@ -152,3 +152,7 @@
 .edit-profile-form button {
   margin-bottom: 1%; /* Add spacing between buttons */
 }
+
+.welcomeMessage{
+  color: #000000;
+}

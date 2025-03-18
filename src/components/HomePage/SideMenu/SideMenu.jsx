@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../context/UserContext";
 import "./SideMenu.css";
 import Modal from "../Thermostat/Modal/Modal";
 import User from "../Users/User"; // Import the User component
@@ -10,6 +11,7 @@ import Help from "../Help/Help"; // Import the Help component
 // SideMenu component definition
 const SideMenu = ({ isOpen, toggleMenu }) => {
   const navigate = useNavigate(); // Hook for navigation
+  const { username } = useContext(UserContext); // Access the username
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
@@ -17,11 +19,12 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
   const [isManager, setIsManager] = useState(false); // State to toggle between manager and normal user
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false); // State for edit profile form visibility
   const [users, setUsers] = useState([
+    { name: username, email: "admin@example.com" },
     { name: "John Doe", email: "john.doe@example.com" },
     { name: "Jane Smith", email: "jane.smith@example.com" },
     { name: "Alice Johnson", email: "alice.johnson@example.com" },
   ]);
-  const activeUser = { name: "User", email: "user@example.com" }; // Example active user
+  const activeUser = { name: username, email: "admin@example.com" }; // Active user details
   const [editUser, setEditUser] = useState(null); // State to store the user being edited
 
   const handleLogout = () => {
@@ -72,6 +75,11 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
     setIsEditProfileOpen(false); // Close the edit profile form after updating details
   };
 
+  const capitalizeFirstLetter = (str) => {
+    if (!str) return "Guest";
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
     <>
       {/* Apply 'open' class if isOpen is true */}
@@ -80,6 +88,10 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
         <button className="menu-close-button" onClick={toggleMenu}>
           ×
         </button>
+        <p className="welcomeMessage">
+          Welcome, {capitalizeFirstLetter(username)}!
+        </p>{" "}
+        {/* Display the username */}
         {/* Menu items */}
         <ul>
           <li onClick={handleOpenModal}>Users</li>
@@ -89,7 +101,7 @@ const SideMenu = ({ isOpen, toggleMenu }) => {
         </ul>
         {/* Toggle button for manager/normal user */}
         <button onClick={() => setIsManager(!isManager)}>
-          {isManager ? "Switch to Normal User" : "Switch to Manager"}
+          {isManager ? "Switch to User" : "Switch to Manager"}
         </button>
       </div>
       {/* Modal to display users, share section, help section, or edit profile form */}
