@@ -9,6 +9,9 @@ const SmartPlugs = ({ isManager }) => {
   // State to manage the name of the new device being added
   const [newDeviceName, setNewDeviceName] = useState("");
 
+  // State to manage the wattage of the new device being added
+  const [newDeviceWattage, setNewDeviceWattage] = useState("");
+
   // State to manage the visibility of the modal
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,12 +36,12 @@ const SmartPlugs = ({ isManager }) => {
   const addDevice = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
 
-    if (!newDeviceName.trim()) return;
+    if (!newDeviceName.trim() || !newDeviceWattage.trim()) return;
 
     const newDevice = {
       name: newDeviceName,
       status: false,
-      energy: 100,
+      energy: parseInt(newDeviceWattage, 10),
     };
 
     try {
@@ -53,6 +56,7 @@ const SmartPlugs = ({ isManager }) => {
       const addedDevice = await response.json();
       setDevices((prevDevices) => [...prevDevices, addedDevice]);
       setNewDeviceName("");
+      setNewDeviceWattage("");
       setIsModalOpen(false);
     } catch (error) {
       console.error("Error adding device:", error);
@@ -148,6 +152,13 @@ const SmartPlugs = ({ isManager }) => {
             value={newDeviceName}
             onChange={(e) => setNewDeviceName(e.target.value)}
             placeholder="Enter device name"
+          />
+          <input
+            className="device-input"
+            type="number"
+            value={newDeviceWattage}
+            onChange={(e) => setNewDeviceWattage(e.target.value)}
+            placeholder="Enter device wattage"
           />
           <button className="add-plug-button" type="submit">
             Sync and Add Plug+
