@@ -102,12 +102,12 @@ const Thermostat = () => {
         <div className="card-humidity">
           <h2>Humidity</h2>
           {/* Displaying static humidity value */}
-          <h3>50%</h3>
+          <h3>66%</h3>
         </div>
         <div className="card-outside-temperature">
           <h2>Outside Temperature</h2>
           {/* Displaying static outside temperature value */}
-          <h3>15°C</h3>
+          <h3>2°C</h3>
         </div>
         <div className="card">
           <h2>Schedule</h2>
