@@ -1,3 +1,5 @@
+// schema for thermostat and schedules collection
+//using mongoose to create the schema
 const mongoose = require('mongoose');
 
 const scheduleSchema = new mongoose.Schema({
@@ -12,4 +14,5 @@ const thermostatsSchema = new mongoose.Schema({
     schedules : [scheduleSchema],
 });
 
+// exporting the schema
 module.exports = mongoose.model('Thermostats', thermostatsSchema);

@@ -18,6 +18,7 @@ const SmartPlugs = ({ isManager }) => {
   // State to manage the visibility of delete buttons
   const [showDeleteButtons, setShowDeleteButtons] = useState(false);
 
+  // Fetch the list of devices from the database
   useEffect(() => {
     const fetchDevices = async () => {
       try {
@@ -32,7 +33,7 @@ const SmartPlugs = ({ isManager }) => {
 
     fetchDevices();
   }, []);
-
+  // Function to add a new device
   const addDevice = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
 
@@ -43,7 +44,7 @@ const SmartPlugs = ({ isManager }) => {
       status: false,
       energy: parseInt(newDeviceWattage, 10),
     };
-
+    //using the fetch API to send a POST request to the server
     try {
       const response = await fetch("http://localhost:3000/api/smartplugs", {
         method: "POST",
@@ -62,12 +63,12 @@ const SmartPlugs = ({ isManager }) => {
       console.error("Error adding device:", error);
     }
   };
-
+// Function to toggle the status of a device
   const toggleDevice = async (id) => {
     try {
       const deviceToToggle = devices.find((device) => device._id === id);
       const newStatus = !deviceToToggle.status;
-
+      //using the fetch API to send a PATCH request to the server
       const response = await fetch(
         `http://localhost:3000/api/smartplugs/${id}`,
         {

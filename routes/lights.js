@@ -1,9 +1,14 @@
+// routes for the lights
+// importing the express module
 const express = require('express');
+// importing the Lights model
 const router = express.Router();
 const Lights = require('../models/Lights');
 
+//GET request to get all the lights
 router.get('/', async (req, res) => {
     try {
+        //finding all the lights
         const lights = await Lights.find();
         res.json(lights);
     } catch (err) {
@@ -11,7 +16,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-
+//POST request to add a new light
 router.post('/', async (req, res) => {
     const {name, status, energy} = req.body;
     try{
@@ -20,7 +25,7 @@ router.post('/', async (req, res) => {
             status,
             energy
         });
-    
+    //saving the light to the database
     const newLight = await light.save();
     res.json(newLight);
     } catch (err) {
@@ -29,8 +34,10 @@ router.post('/', async (req, res) => {
     }
 });
 
+//PATCH request to update the status of a light
 router.patch('/:id', async (req, res) => {
     try {
+        //updating the light with the given id
         const updatedLight = await Lights.findByIdAndUpdate(
             req.params.id,
             //req.body,
@@ -46,4 +53,5 @@ router.patch('/:id', async (req, res) => {
     }
 });
 
+//exporting the router
 module.exports = router;

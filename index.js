@@ -4,11 +4,11 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors'); //handling cross origin requests
-const lightsRouter = require('./routes/lights');
+const lightsRouter = require('./routes/lights'); //importing lights routes
 const usersRouter = require('./routes/users'); //importing user routes
-const robotsRouter = require('./routes/robots');
-const smartPlugsRouter = require('./routes/smartplugs');
-const thermostatRouter = require('./routes/thermostat');
+const robotsRouter = require('./routes/robots'); //importing robots routes
+const smartPlugsRouter = require('./routes/smartplugs'); //importing smart plugs routes
+const thermostatRouter = require('./routes/thermostat'); //importing thermostat routes
 //const Lights = require('./models/Lights');
 
 
@@ -23,8 +23,10 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'], 
   credentials: true, 
 }));
+//using express.json() to parse json data
 app.use(express.json());
 
+//using cors for all routes
 app.options('*', cors());
 
 
@@ -45,28 +47,18 @@ mongoose.connect(process.env.MONGO_URI)
     process.exit(1);
   });
 
-// app.post('/api/lights', async (req, res) => {
-//   try{
-//     const {name, status, energy} = req.body;
-//     const newLight = new Lights({name, status, energy});
-//     await newLight.save();
-//     res.status(201).json(newLight);
-//   } catch(err) {
-//     console.error('Error adding light:', err);
-//     res.status(500).json({ message: 'Server error' });
-//   }
-// });
+
 
 //const PORT = process.env.PORT || 3000;
 
 
 
 // Serve static files from the dist directory
-app.use('/api/lights', lightsRouter);
+app.use('/api/lights', lightsRouter); //using lights routes for api requests
 app.use('/api/users', usersRouter); //using user routes for api requests
-app.use('/api/robots', robotsRouter);
-app.use('/api/smartplugs', smartPlugsRouter);
-app.use('/api/thermostat', thermostatRouter);
+app.use('/api/robots', robotsRouter); //using robots routes for api requests
+app.use('/api/smartplugs', smartPlugsRouter); //using smart plugs routes for api requests
+app.use('/api/thermostat', thermostatRouter); //using thermostat routes for api requests
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
