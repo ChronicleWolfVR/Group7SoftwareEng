@@ -1,10 +1,14 @@
+//router for robots
+//importing express module
 const express = require('express');
+//importing the Robots model
 const router = express.Router();
 const Robots = require('../models/Robots');
 
 //gettimng all robots
 router.get('/', async (req, res) => {
     try{
+        //finding all the robots
         const robots = await Robots.find();
         res.json(robots);
     } catch(err) {
@@ -12,10 +16,11 @@ router.get('/', async (req, res) => {
     }
 });
 
-
+//adding a new robot using POST request
 router.post('/', async (req, res) => {
     const {name, status, energy} = req.body;
     try{
+        //creating a new robot
         const newRobot = new Robots({name, status, energy});
         await newRobot.save();
         res.status(201).json(newRobot);
@@ -24,7 +29,8 @@ router.post('/', async (req, res) => {
         }
 });
 
-
+//updating the status of a robot using PATCH request
+//updating based on the id
 router.patch('/:id', async (req, res) => {
     try{
         const updatedRobot = await Robots.findByIdAndUpdate
@@ -40,7 +46,7 @@ router.patch('/:id', async (req, res) => {
     res.status(500).json({ message: 'Error updating Robot' });
 }
 });
-
+//exporting the router
 module.exports = router;
 
 //deleting a robot
