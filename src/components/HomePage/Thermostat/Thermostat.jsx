@@ -11,12 +11,14 @@ const Thermostat = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control the visibility of the modal
   const [confirmationMessage, setConfirmationMessage] = useState(''); // State to store the confirmation message
 
+  // Fetch the current temperature from the database
   useEffect(() => {
     const fetchTemperature = async () => {
       try {
         const response = await fetch("http://localhost:3000/api/thermostat");
         if (!response.ok) throw new Error("Failed to fetch the thermostat");
         const data = await response.json();
+        //setting the temperature state with the fetched data
         setTemperature(data.currentTemp);
       } catch (error) {
         console.error("Error fetching thermostat:", error);
@@ -31,6 +33,7 @@ const Thermostat = () => {
     setTemperature(value);
     setIsChanging(true);
 
+    // Update the temperature in the database
     try {
       const response = await fetch("http://localhost:3000/api/thermostat/temp", {
         method: "PATCH",

@@ -31,6 +31,7 @@ const Lights = ({ isManager }) => {
   // State to manage the visibility of delete buttons
   const [showDeleteButtons, setShowDeleteButtons] = useState(false);
 
+  // Fetch the list of lights from the database
   useEffect(() => {
     const fetchLights = async () => {
       try {
@@ -47,6 +48,7 @@ const Lights = ({ isManager }) => {
     fetchLights();
   }, []);
 
+  // Function to toggle the status of a light
   const toggleLight = async (id) => {
     try {
       console.log("Toggling light:", id); // Debugging
@@ -57,7 +59,7 @@ const Lights = ({ isManager }) => {
       }
       const newStatus = !lightToToggle.status;
       console.log("New status:", newStatus);
-
+      //using the fetch API to send a PATCH request to the server
       const response = await fetch(`http://localhost:3000/api/lights/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -75,7 +77,7 @@ const Lights = ({ isManager }) => {
       console.error("Error toggling light:", error);
     }
   };
-
+  // Function to add a new light
   const addLight = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
 
@@ -86,7 +88,7 @@ const Lights = ({ isManager }) => {
       status: false,
       energy: 0,
     };
-
+    //using the fetch API to send a POST request to the server
     try {
       console.log("Adding light:", newLight); // Debugging
       const response = await fetch("http://localhost:3000/api/lights", {
@@ -103,7 +105,7 @@ const Lights = ({ isManager }) => {
 
       const addedLight = await response.json();
       console.log("Added light:", addedLight);
-
+      // Update the list of lights with the new light
       setLights((prevLights) => [...prevLights, addedLight]);
       setNewLightName("");
       setIsModalOpen(false);

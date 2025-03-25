@@ -36,6 +36,7 @@ const Robots = ({ isManager }) => {
     fetchRobots();
   }, []);
 
+  // Function to add a new robot
   const addRobot = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
 
@@ -46,7 +47,7 @@ const Robots = ({ isManager }) => {
       status: false,
       energy: 0,
     };
-
+    //using the fetch API to send a POST request to the server
     try {
       const response = await fetch("http://localhost:3000/api/robots", {
         method: "POST",
@@ -64,12 +65,12 @@ const Robots = ({ isManager }) => {
       console.error("Error adding robot:", error);
     }
   };
-
+  // Function to toggle the status of a robot
   const toggleRobot = async (id) => {
     try {
       const robotToToggle = robots.find((robot) => robot._id === id);
       const newStatus = !robotToToggle.status;
-
+      //using the fetch API to send a PATCH request to the server
       const response = await fetch(`http://localhost:3000/api/robots/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -77,7 +78,7 @@ const Robots = ({ isManager }) => {
       });
 
       if (!response.ok) throw new Error("Failed to toggle robots status");
-
+      // Update the status of the robot in the state
       setRobots((prevRobots) =>
         prevRobots.map((robot) =>
           robot._id === id ? { ...robot, status: newStatus } : robot
